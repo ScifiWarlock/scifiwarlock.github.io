@@ -36,6 +36,9 @@ body {
   height: auto;
   margin-bottom: 20px;
   border-radius: 0;
+  border: none;       /* remove any border */
+  outline: none;      /* remove focus outline if clicked */
+  border-radius: 0;
 }
 
 /* LEFT TEXT */
