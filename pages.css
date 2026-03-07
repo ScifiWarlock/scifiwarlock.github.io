@@ -1,0 +1,54 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* navbar */
+.topnav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  text-align: center;
+  z-index: 1000;
+}
+
+.topnav a {
+  display: inline-block;
+  color: black;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  text-decoration: underline;
+}
+
+/* centered content */
+.content {
+  max-width: 700px;
+  margin: 100px auto 40px auto;
+  text-align: center;
+}
+
+.docview{
+  max-width: 1400px;
+  margin: 60px auto;
+  text-align: center;
+}
+/* PDF embedding */
+.content embed, 
+.content iframe {
+  width: 100%;        /* fill content block width */
+  height: 400px;      /* adjust as needed */
+  border: 1px solid #ccc;
+}
+
+.docview embed, 
+.docview iframe {
+  width: 100%;        /* fill content block width */
+  height: 800px;      /* adjust as needed */
+  border: 1px solid #ccc;
+}
