@@ -91,7 +91,7 @@
                 // Wrap in $$ for MathJax display
                 div.innerHTML = `
         <strong>${type}${title ? ": " + title : ""}</strong>
-        <div class="math-content">\\[ ${block} \\]</div>
+        <div class="math-content">\\[ ${content} \\]</div>
     `;
                 container.appendChild(div);
 
