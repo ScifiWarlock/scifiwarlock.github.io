@@ -9,10 +9,9 @@
 
   window.MathJax = {
   tex: {
-
-    // inlineMath: [['$', '$'], ['\\(', '\\)']],
-    // processEnvironments: true, // This allows \begin{thm} to work in text
-    // processRefs: true
+    inlineMath: [['$', '$'], ['\\(', '\\)']],
+    processEnvironments: true, // This allows \begin{thm} to work in text
+    processRefs: true,
     environments: {
       thm: ["\\bf Theorem:", ""],
       lem: ["\\bf Lemma:", ""],
@@ -110,87 +109,41 @@
         window.addEventListener("DOMContentLoaded", () => {
 
             const container = document.getElementById("results-container");
-
-
-
             // Retrieve search results from localStorage
-
             const stored = localStorage.getItem("results");
-
             const matches = stored ? JSON.parse(stored) : [];
-
-
-
             // Retrieve the search term to highlight
 
             const searchTerm = localStorage.getItem("lastSearch") || "";
 
-
-
             if (matches.length === 0) {
-
                 container.innerHTML = "<p>No results found.</p>";
-
                 return;
-
             }
-
-
 
             matches.forEach((block, index) => {
 
                 const div = document.createElement("div");
-
                 div.classList.add("result-card");
-
-
-
                 // Extract type and title
 
                 const typeMatch = block.match(/\\begin\{(?!enumerate\b)(\w+)\}(?:\[(.*?)\])?/);
 
                 let type = typeMatch ? typeMatch[1] : "Unknown";
-
                 //let title = typeMatch && typeMatch[2] ? typeMatch[2] : "";
-
-
-
-
-
                 console.log(block);
-
-
-
                 // Highlight search term (case-insensitive)
-
                 let content = block.replace(new RegExp(searchTerm, "gi"), match => `<span class="highlight">${match}</span>`);
 
-
-
                 // Wrap in $$ for MathJax display
-
-                div.innerHTML = `
-
-        <strong>${type}</strong>
-
-        <div>${block}</div>
-
-    `;
-
+                div.innerHTML = `<strong>${type}</strong><div>${block}</div> `;
                 container.appendChild(div);
-
-
-
                 // Render MathJax for this block
-
                 MathJax.typesetPromise([div]).catch(err => console.log(err));
 
             });
-
         });
 
     </script>
-
 </body>
-
 </html>
