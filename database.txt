@@ -1,0 +1,424 @@
+\begin{defn}[Proposition]
+    A proposition is a statement that takes a TRUE or FALSE value
+\end{defn}
+\begin{defn}[Connective]
+    A connective is a unary or binary operator allowing us to chain propositions to create new propositions
+\end{defn}
+\begin{lem}[Proof by Contradiction]
+    $(P \implies Q) \iff \lnot(P \land \lnot Q) \iff \lnot P \lor Q$
+\end{lem}
+\begin{lem}[Proof by Contrapositive]
+    $(P \implies Q) \iff \lnot Q \implies \lnot P$
+\end{lem}
+\begin{defn}[Quantifiers]
+    We propose two quantifiers: $\forall$ (for all/for each) and $\exists$ (there exists)
+\end{defn}
+\begin{lem}[Quantifier Distribution]
+    $\lnot(\forall x : P(x)) \iff \exists x : \lnot P(x)$ and $\lnot(\exists x: P(x)) \iff \forall x : \lnot P(x)$
+\end{lem}
+\begin{thm}[Same Quantifier Swap]
+    $\forall x \forall y: P(x, y) \iff \forall y, \forall x: P(x, y)$ and $\exists x, \exists y: P(x, y) \iff \exists y, \exists x: P(x, y)$
+\end{thm}
+\begin{thm}[Different Quantifier Swap]
+    $\exists x \forall y: P(x, y) \implies \forall y \exists x: P(x, y)$
+\end{thm}
+\begin{defn}[Comprehension Principle]
+    The Comprehension Principle: $A \coloneq \{x : P(x)\}$
+\end{defn}
+\begin{axm}[Axiom of Separation]
+    Any set $A$ can be defined as $\{x \in U : P(x)\}$.
+\end{axm}
+\begin{axm}[Axiom of Extensionality]
+    $\forall A, B: A = B \iff \forall x: (x \in A \iff x \in B)$
+\end{axm}
+\begin{axm}[Axiom of Empty Set]
+    $\exists \varnothing : \forall x \in U: x \notin \varnothing$
+\end{axm}
+\begin{defn}[Subset Relation]
+    $\forall A, B: A \subseteq B \implies \forall x \in A: x \in B$
+\end{defn}
+\begin{axm}[Powerset]
+    $\forall A \exists \mathcal{P}(A): (\forall B \subset A: B \in \mathcal(P)(A))$
+\end{axm}
+\begin{axm}[Pairset]
+    $\forall x, y \exists A \forall Z \in A: x = z \lor y = z$
+\end{axm}
+\begin{axm}[Infinite Set]
+    $I \coloneq \{x: x \in I \implies \{x\} \in I\}$
+\end{axm}
+\begin{defn}[Kuratowski Pair]
+    $(x, y) \coloneq \{\{x\}, \{x, y\}\}$
+\end{defn}
+\begin{thm}[Ordered Field Characteristic]
+    If $F$ is an ordered field, then it has characteristic $0$
+\end{thm}
+\begin{thm}[Isomorphism of Rationals]
+The rationals of different fields are isomorphic
+\end{thm}
+\begin{thm}[The Supremum Isomorphism]
+    $\forall A \in \mathbb{R}_F: (\exists b \in F, \forall a \in A: a \leqslant b): \sup: A \xrightarrow{} F$ and $\sup$ is an isomorphism
+\end{thm}
+\begin{lem}[Dedekind Cuts in an Ordered Complete Field]
+    $\forall A \in \mathbb{R}_F: A = \{a \in \mathbb{Q}_F: a < \sup(A)\}$
+\end{lem}
+\begin{thm}[Isomorphism of All Complete Ordered Fields]
+For all complete ordered fields $(F, +, 0, \cdot, 1, \leqslant)$, we find that $\mathbb{R} \cong F$.
+\end{thm}
+\begin{thm}[Existence and Uniqueness of the nth root]
+$\forall a \in \mathbb{R}^+, \forall n \in \mathbb{N}\setminus \{0\}: (\exists x \in \mathbb{R}^+: x^n = a) \land (x^n = y^n \implies x = y)$
+\end{thm}
+\begin{cor} [Integer Powers]
+$\forall n \in \mathbb{N}, \forall a \in \mathbb{R}: a^{-n} = (a^{-1})^n = (\frac{1}{a})^n \land a^0 = 1$
+\end{cor}
+\begin{cor}[Integer Powers]
+$\forall m, n \in \mathbb{N}: a^m \cdot a^n = a^{m+n} \land a^{m \cdot n} = (a^m)^n$
+\end{cor}
+\begin{lem}[Rational Powers Equivalence]
+$\forall m, n, p, q \in \mathbb{Z}: n, q > 0 \land \frac{m}{n} = \frac{p}{q} \implies \forall a > 1: (a^m)^{1/n} = (a^p)^{1/q}$
+\end{lem}
+\begin{cor}[Rational Powers nth Roots]
+$\forall p, q \in \mathbb{Z}, q \neq 0: a^\frac{p}{q} = (a^p)^{1/q} = (a^{1/q})^p$
+\end{cor}
+\begin{lem}[Rational Powers Addition]
+$\forall r, s \in \mathbb{Q}: a^{r+s} = a^r \cdot a^s$
+\end{lem}
+\begin{defn}[Real Powers]
+$a^x \coloneq \begin{cases}
+    \sup\{a^z: z \in \mathbb{Q} \land z \leqslant x\}, \ \ a > 1\\
+    \inf\{a^z: z \in \mathbb{Q} \land z \leqslant x\}, \ \ a < 1\\
+    1, \ \ a = 1\\
+\end{cases}$
+\end{defn}
+\begin{lem}
+$\forall z, r \in \mathbb{Q}: z < r \implies a^z < a^r$. 
+\end{lem}
+\begin{lem}[Real Powers Addition]
+  $\forall x, y \in \mathbb{R}: a^{x+y} = a^x \cdot a^y$  
+\end{lem}
+\begin{thm}[The Exponential Function]
+The exponential function: $f: \mathbb{R} \xrightarrow{} \mathbb{R}^+ \setminus \{0\}$ is a bijection
+\end{thm}
+\begin{cor}[The Logarithm]
+$\log_b: \mathbb{R}^+ \setminus \{0\} \xrightarrow{} \mathbb{R}$ such that $log_b(y) = x$
+\end{cor}
+\begin{defn}[First n naturals]
+    The first $n$ naturals are $[0, n) \coloneq \{k \in \mathbb{N}: k < n\}$
+\end{defn}
+\begin{defn} [Finite Set]
+    A finite set $A$ is a set such that $\exists f, \exists n \in \mathbb{N}: f: [0, n) \xrightarrow{} A$ and $f$ is a bijection
+\end{defn}
+\begin{lem}[Dedekind Infinite]
+Given a set $A$: A is Dedekind infinite $\implies$ A is infinite
+\end{lem}
+\begin{lem}[Finite Sets and Cardinality]
+For finite sets $A$ and $b$:
+\begin{enumerate}
+    \item $B \subseteq A \implies |B| \leqslant |A|$
+    \item $|A \cup B| \leqslant |A| + |B|$
+    \item $|A \times B| = |A| \cdot |B|$
+\end{enumerate}
+\end{lem}
+\begin{defn}[Countable Set]
+A countable set $A$ is one such that $\exists f$ such that $f: \mathbb{N} \xrightarrow{} A$ is a bijection
+\end{defn}
+\begin{thm}
+If $A$ is countable, then $\forall B \subseteq A: B \ \text{infinite} \implies B \ \text{countable}$
+\end{thm}
+\begin{cor}
+For any set $A$: A finite or countable $\iff$ $\exists f: A \xrightarrow{} \mathbb{N}$ such that $f$ is an injection
+\end{cor}
+\begin{lem}
+If $A$ and $B$ are countable, then $A \times B$ is countable
+\end{lem}
+\begin{thm}
+The set $\mathbb{Q}$ is infinite and countable
+\end{thm}
+\begin{lem}
+The set of algebraic reals: $\{x \in \mathbb{R}: (\exists n \in \mathbb{N}, \exists a_0,...,a_n \in \mathbb{Z}: a_n \neq 0 \land a_nx^n +...+a_1x + a_0 = 0)\}$ is countable.
+\end{lem}
+\begin{thm}
+There exists non-algebraic reals.
+\end{thm}
+\begin{thm}
+The set of sequences $\{0, 1\}^\mathbb{N}$ is uncountable
+\end{thm}
+\begin{lem}
+The set of functions $\{0, 1\}^\mathbb{R}$ is uncountable
+\end{lem}
+\begin{lem}
+$\mathbb{N}^\mathbb{N}$ is uncountable.
+\end{lem}
+\begin{defn}
+Equinumerosity of two sets $A, B$: $A \simeq B \implies \exists f: (f:A \xrightarrow{} B) \land f \ \text{bijection}$
+\end{defn}
+\begin{thm}
+For all $A$, $A \notin [\mathcal{P}(A)]$
+\end{thm}
+\begin{defn}
+We define nonequinumerosity: $A \lesssim B \implies \exists f: (f: A \xrightarrow{} B) \land f \ \text{injection}$
+\end{defn}
+\begin{thm}
+$A \lesssim B \land B \lesssim A \implies A \simeq B$
+\end{thm}
+\begin{thm}
+Numerosity $\lesssim$ is a partial ordering for a set $U$ of possible sets.
+\end{thm}
+\begin{lem}
+Given $f: A \xrightarrow{} B \land g: B \xrightarrow{} C$. If $f, g$ are injections, then $g \circ f$ is an injection.
+\end{lem}
+\begin{lem}
+$\forall A, B, C \in U: A \lesssim B \implies A \times C \lesssim B \times C$
+\end{lem}
+\begin{defn}
+A partially ordered semigroup is a group equipped with associativity, identity and order ($\leqslant$), but not with inverses under the group operation.\\
+Additionally $\forall a, b, c \in G: a \leqslant b \implies a + g \leqslant b + g \iff g + a \leqslant g + b$
+\end{defn}
+\begin{defn}
+The equinumerosity class $[\mathbb{R}]$ is called the continuum.
+\end{defn}
+\begin{lem}
+$\mathbb{R} \times \mathbb{R} \simeq \mathbb{R}$ and $\forall n \in \mathbb{N}: \mathbb{R}^n \simeq \mathbb{R}$
+\end{lem}
+\begin{lem}
+$\mathbb{R}^\mathbb{N} \simeq \mathbb{R}$
+\end{lem}
+\begin{lem}
+$\mathbb{R} \lnsim \mathbb{R}^\mathbb{R}$
+\end{lem}
+\begin{defn}
+A Cauchy sequence: $\forall k \in \mathbb{N}, \exists n_0 \in \mathbb{N}, \forall m, n \geqslant n_0: |x_m - x_n| < \frac{1}{k+1}$
+\end{defn}
+\begin{defn}
+A convergent sequence: $\exists L \in \mathbb{R}, \forall k \in \mathbb{N}, \exists n_0 \in \mathbb{N}, \forall n \geqslant n_0: |x_n - L| < \frac{1}{k+1}$
+\end{defn}
+\begin{defn}
+A metric space $(X, \varrho)$ is a set $X$ equipped with a metric $\varrho: X \times X \xrightarrow{} \mathbb{R}^+$:
+\begin{enumerate}
+    \item $\forall x, y \in X: \varrho(x, y) \geqslant 0 \land \varrho(x, x) = 0$ (Positivity)
+    \item $\forall x, y \in X: \varrho(x, y) = \varrho(y, x)$ (Symmetry)
+    \item $\forall x, y, z \in X: \varrho(x, z) \leqslant \varrho(x, y) + \varrho(y, z)$ (Triangle Inequality)
+\end{enumerate}
+\end{defn}
+\begin{defn}
+A norm $||\cdot||$ is a metric that gives the magnitude of a vector from the "origin" or 0 element. Let $V$ be a vector space:
+\begin{enumerate}
+    \item $\forall v \in V: ||v|| \geqslant 0$ (Positivity)
+    \item $\forall v \in V \land c \in F: ||cv|| = |c|||v||$ (Scalar Multiplication)
+    \item $\forall v, w \in V: ||v + w|| \leqslant ||v|| + ||w||$ (Triangle Inequality)
+\end{enumerate}
+\end{defn}
+\begin{defn}
+A Cauchy sequence: $\forall \epsilon > 0, \exists n_0 \geqslant 0, \forall m, n \geqslant n_0: \varrho(x_m, x_n) < \epsilon$\\
+A convergent sequence: $\exists L \in X, \forall \epsilon > 0, \exists n_0 \geqslant 0, \forall n \geqslant n_0: \varrho(x_n, L) < \epsilon$
+\end{defn}
+\begin{lem}
+A convergent sequence is Cauchy.
+\end{lem}
+\begin{lem}
+For $(X, \varrho)$, an $X$ valued, convergent sequence $\{x_n\}_{n_k \in \mathbb{N}}$ has at most one limit $L$. 
+\end{lem}
+\begin{defn}
+A subsequence is defined by $\{x_{n_k}\}_{n_k \in \mathbb{N}}$ where $\{n_k\}_{k \in \mathbb{N}}$ is a strictly increasing/monotonically increasing sequence
+\end{defn}
+\begin{lem}
+For a Cauchy sequence $\{x_n\}_{n \in \mathbb{N}}$, if there is a convergent subsequence such that $x_{n_k} \xrightarrow{} z \implies x_n \xrightarrow{} z$ where $z$ is a limit point
+\end{lem}
+\begin{cor}
+If a sequence in $(X, \varrho)$ is Cauchy, then it is convergent and eventually constant.
+\end{cor}
+\begin{lem}
+Urysohn's Subsequence Principle says the following are equivalent for a sequence $\{x_n\}_{n \in \mathbb{N}}$ and a limit point $z$:
+\begin{enumerate}
+    \item $x_n \xrightarrow{} z$
+    \item Every subsequence $\{x_{n_k}\}_{n_k \in \mathbb{N}}$ contains a convergent subsubsequence such that $x_{{n_k}_j} \xrightarrow{} z$
+\end{enumerate}
+\end{lem}
+\begin{defn}
+An open ball around point $x$, radius $r$ in $(X, \varrho)$ is $B(x, r) \coloneq \{y \in X: \varrho(x, y) < r\}$
+\end{defn}
+\begin{defn}
+An open set is one for which we can find an empty ball around each point that is a subset of the set
+\end{defn}
+\begin{cor}
+A set $A$ is open if and only if its complement is closed.
+\end{cor}
+\begin{lem}
+The singleton $\{x\}$ is a closed set.
+\end{lem}
+\begin{lem}
+Every "open" ball is open
+\end{lem}
+\begin{lem}
+If $\varrho$ is a discrete metric on $X$, then every subset of $X$ is open and closed.
+\end{lem}
+\begin{lem}
+A closed ball $\bar{B}(x, r) \coloneq \{y \in X: \varrho(y, x) \leqslant r\}$ is closed
+\end{lem}
+\begin{defn}
+    A topology $\uptau$ is a collection of subsets of a space $X$ which are open if:
+    \begin{enumerate}
+        \item $\varnothing, X \in \uptau$
+        \item $\bigcup A \in \uptau$ (Closed under Arbitrary Unions - finite/infinite)
+        \item $\bigcap A \in \uptau$ (Closed under \textbf{finite} intersection)
+    \end{enumerate}
+\end{defn}
+\begin{defn}
+    A topology can also be defined as a collection of closed sets such that:
+    \begin{enumerate}
+        \item Since $X = \varnothing^c$, and since $X$ is open, then $\varnothing$ is closed. Similarly since $\varnothing$ is open, then $X$ is closed.
+        \item $(\bigcup A)^c = \bigcap A^c$. $A^c$ is closed, since $A$ is open, and similarly $(\bigcup A)^c$ is closed. Therefore, the arbitrary intersection of closed sets belongs in the topology.
+        \item Similarly $(\bigcap A)^c = \bigcup A^c$, so the finite union of closed sets belongs to the topology.
+    \end{enumerate}
+\end{defn}
+\begin{defn}
+    A basis $\mathcal{B}$ of a topology $\uptau$ is a collection of $X$:
+    \begin{enumerate}
+        \item $\forall x \in X, \exists B \in \mathcal{B}: x \in B \land B \subseteq X$
+        \item $\forall B_1, B_2 \in \mathcal{B}, \forall x \in B_1 \cap B_2, \exists B_3 \in \mathcal{B}: x \in B_3 \subseteq B_1 \cap B_2$
+    \end{enumerate}
+\end{defn}
+\begin{lem}
+    A topology $\uptau$ \textbf{generated} by a basis $\mathcal{B}$ is defined as:
+    \begin{equation*}
+        \uptau \coloneq \{U \subseteq X: (\forall x \in U, \exists B \in \mathcal{B}: x \in B \subseteq U)\}
+    \end{equation*}
+\end{lem}
+\begin{lem}
+    A metric $\varrho$ on $X$ induces a topology $\uptau \coloneq \{O \subseteq X: O \ \text{open}\}$
+\end{lem}
+\begin{lem}
+    The topology $\uptau$ generated by the basis $\mathcal{B}$ is equivalent to the collection of unions of subcollections of $\mathcal{B}$.
+\end{lem}
+\begin{defn} We define the interior and closure:
+    \begin{enumerate}
+        \item The interior of a set $A$: $\text{int}(A) \coloneq \bigcup \{O \in \uptau: O \subseteq A\}$
+        \item The closure of a set $A$: $\bar{A} \coloneq \bigcap \{C \in \uptau: A \subseteq C\}$
+    \end{enumerate}
+\end{defn}
+\begin{lem}
+    $\text{int}(A) \subseteq A \subseteq \bar{A}$
+\end{lem}
+\begin{lem} The following equivalences hold:
+    \begin{enumerate}
+        \item $A \ \text{open} \iff A = \text{int}(A)$
+        \item $A \ \text{closed} \iff A = \bar{A}$
+    \end{enumerate}
+\end{lem}
+\begin{defn}
+The boundary of a set $A$ or $\partial A$ is defined as $\bar{A} \setminus \text{int}(A)$
+\end{defn}
+\begin{lem}
+Let $(X, \varrho)$ be a matric space. Prove that for all sets $A, B \subseteq X$, the following holds:
+\begin{equation*}
+    A \subseteq B \implies \text{int}(A) \subseteq \text{int}(B) \land \bar{A} \subseteq \bar{B}
+\end{equation*}
+and
+\begin{equation*}
+    X \setminus \text{int}(A) = \overline{X \setminus A} \land X \setminus \bar{A} = \text{int}(X \setminus A)
+\end{equation*}
+In particular.
+\begin{equation*}
+    \partial A = \bar{A} \cap \overline{X \setminus A} = \partial(X \setminus A)
+\end{equation*}
+\end{lem}
+\begin{defn}
+An adherent point $x \in X$: $\forall r > 0: B(x, r) \cap A \neq \varnothing$
+\end{defn}
+\begin{lem}
+$x \in X$ is adherent if and only if $x \in \bar{A}$
+\end{lem}
+\begin{defn}
+A boundary point $x \in X$: $\forall r > 0: B(x, r) \cap A \neq \varnothing \land B(x, r) \cap (X \setminus A) \neq \varnothing$
+\end{defn}
+\begin{defn}
+An interior point $x \in X$: $\exists r > 0: B(x, r) \subseteq A$. (Question to self, what if it were $\forall r > 0$?)
+\end{defn}
+\begin{defn}
+An exterior point $x \in X$: $\exists r > 0: B(x, r) \cap A = \varnothing$
+\end{defn}
+\begin{defn}
+A limit point $x \in X$: $\forall r > 0: (B(x, r) \cap A) \setminus \{x\} \neq \varnothing$.\\
+An isolated point $x \in A$: $\exists r > 0: B(x, r) \cap A = \{x\}$
+\end{defn}
+\begin{lem}
+Every isolated point is a boundary point of $A$
+\end{lem}
+\begin{lem}
+Every limit point is adherent.
+\end{lem}
+\begin{lem}
+$\bar{A} = \{x \in X: \text{limit point}\} \cup \{x \in X: \text{isolated point}\}$ where the two sets in the union are disjoint.
+\end{lem}
+\begin{defn}
+A first countable space is one for which each point has a countable local basis.
+\end{defn}
+\begin{lem}
+    All metric spaces are first countable.
+\end{lem}
+\begin{lem}
+$(\exists \{x_n\}_{n \in \mathbb{N}} \in A^\mathbb{N}: x_n \xrightarrow{} x), \forall n \in \mathbb{N}: x_n \neq x \iff x \ \text{limit point}$
+\end{lem}
+\begin{lem}
+    $(\exists \{x_n\}_{n \in \mathbb{N}} \in A^\mathbb{N}: x_n \xrightarrow{} x), \exists n_0 \in \mathbb{N}, \forall n \geqslant n_0: x_n = x \iff x \ \text{isolated point}$
+\end{lem}
+\begin{thm}
+$A \ \text{closed} \iff (\forall \{x_n\}_{n \in \mathbb{N}}\in A^{\mathbb{N}}, \forall x \in X: x_n \xrightarrow{} x \implies x \in A)$
+\end{thm}
+\begin{cor}
+If $A \subseteq X$, then:
+\begin{equation*}
+    \forall x \in X: x \in \bar{A} \iff \exists \{x_n\}_{n \in \mathbb{N}} \in A^\mathbb{N}: x_n \xrightarrow{} x.
+\end{equation*}
+\end{cor}
+\begin{cor}
+Thm 9.1 simplifies to $A$ is closed if and only if it includes all of its limit points.
+\end{cor}
+\begin{defn}
+A set $B \subseteq A$ is dense in $A$ iff $\forall a \in A, \exists \{b_n\}_{n \in \mathbb{N}} \in B^\mathbb{N}: b_n \xrightarrow{} a$
+\end{defn}
+\begin{defn}
+A metric space is deemed \textbf{separable} if:
+\begin{equation*}
+    \exists A \subseteq X: A \ \text{countable} \land \bar{A} = X
+\end{equation*}
+\end{defn}
+\begin{defn}
+A metric space $(X, \varrho)$ is complete if all Cauchy sequences converge with a limit point in that space:
+\begin{equation*}
+    \forall \{x_n\}_{n \in \mathbb{N}}, \exists x \in X: \{x_n\} \ \text{Cauchy} \implies x_n \xrightarrow{} x
+\end{equation*}
+\end{defn}
+\begin{defn}
+A set $A \subseteq X$ for $(X, \varrho)$ is said to be bounded if:
+\begin{eqnarray}
+    \exists x \in X, \exists r > 0: A \subseteq B(x, r)
+\end{eqnarray}
+\end{defn}
+\begin{lem}
+    $\forall \{x_n\}_{n \in \mathbb{N}}: \{x_n\} \ \text{Cauchy} \implies \{x_n: n \in \mathbb{N}\} \ \text{bounded}$
+\end{lem}
+\begin{lem}
+Given a totally ordered set $(A, \leqslant)$: for each $A$-valued sequence, there exists a monotonically increasing (non-decreasing so $\leqslant$) or decreasing subsequence.
+\end{lem}
+\begin{lem}
+Every bounded monotone sequence of elements from an ordered, complete field converges such that:
+\begin{equation*}
+    \lim_{n \xrightarrow{} \infty} x_n = L \coloneq \sup\{x_n: n \in \mathbb{N}\}
+\end{equation*}
+OR if it is non-increasing:
+\begin{equation*}
+    \lim_{n \xrightarrow{} \infty} x_n = L \coloneq \inf\{x_n: n \in \mathbb{N}\}
+\end{equation*}
+\end{lem}
+\begin{thm}
+Bolzano-Weierstrass: Every bounded sequence in a complete, ordered field has a convergent subsequence.
+\end{thm}
+\begin{cor}
+$\mathbb{R}$ is then complete.
+\end{cor}
+\begin{lem}
+Given a complete metric space $(X, \varrho)$, for all $A \subseteq X$:
+\begin{equation*}
+    (A, \varrho_A) \ \text{complete} \iff A \ \text{closed}
+\end{equation*}
+\end{lem}
