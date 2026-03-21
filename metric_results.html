@@ -3,6 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <title>Search Results</title>
+    <script>
+  window.MathJax = {
+    tex: {
+      packages: {'[+]': ['ams']},
+      // This "ports" your custom LaTeX logic into MathJax
+      environments: {
+        thm: ['\\color{green}{\\bf Theorem.}\\enspace\\it', ''],
+        lem: ['\\color{orange}{\\bf Lemma.}\\enspace\\it', ''],
+        defn: ['\\color{magenta}{\\bf Definition.}\\enspace\\it', ''],
+        cor: ['\\color{cyan}{\\bf Corollary.}\\enspace\\it', ''],
+        axm: ['\\bf Axiom.\\enspace\\it', '']
+      }
+    }
+  };
+</script>
     <!-- MathJax -->
     <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <style>
