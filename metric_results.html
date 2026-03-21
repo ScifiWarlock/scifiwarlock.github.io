@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Search Results</title>
+    <!-- MathJax -->
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -49,7 +51,7 @@
             const stored = localStorage.getItem("results");
             const matches = stored ? JSON.parse(stored) : [];
 
-            // Also retrieve the search term to highlight
+            // Retrieve the search term to highlight
             const searchTerm = localStorage.getItem("lastSearch") || "";
 
             if (matches.length === 0) {
@@ -57,21 +59,25 @@
                 return;
             }
 
-            // Loop over each block and display it
             matches.forEach((block, index) => {
                 const div = document.createElement("div");
                 div.classList.add("result-card");
 
-                // Attempt to extract the type and title from the block
+                // Extract type and title
                 const typeMatch = block.match(/\\begin\{(\w+)\}(?:\[(.*?)\])?/);
                 let type = typeMatch ? typeMatch[1] : "Unknown";
                 let title = typeMatch && typeMatch[2] ? typeMatch[2] : "";
 
-                // Highlight search term
+                // Highlight search term (case-insensitive)
                 let content = block.replace(new RegExp(searchTerm, "gi"), match => `<span class="highlight">${match}</span>`);
 
-                div.innerHTML = `<strong>${type}${title ? ": " + title : ""}</strong><pre>${content}</pre>`;
+                // Wrap in $$ for MathJax display
+                div.innerHTML = `<strong>${type}${title ? ": " + title : ""}</strong><pre>$$${content}$$</pre>`;
+
                 container.appendChild(div);
+
+                // Render MathJax for this block
+                MathJax.typesetPromise([div]).catch(err => console.log(err));
             });
         });
     </script>
