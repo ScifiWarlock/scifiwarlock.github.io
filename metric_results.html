@@ -72,8 +72,10 @@
                 let content = block.replace(new RegExp(searchTerm, "gi"), match => `<span class="highlight">${match}</span>`);
 
                 // Wrap in $$ for MathJax display
-                div.innerHTML = `<strong>${type}${title ? ": " + title : ""}</strong><pre>\\[${content}\\]</pre>`;
-
+                div.innerHTML = `
+        <strong>${type}${title ? ": " + title : ""}</strong>
+        <div class="math-content">\\[ ${block} \\]</div>
+    `;
                 container.appendChild(div);
 
                 // Render MathJax for this block
