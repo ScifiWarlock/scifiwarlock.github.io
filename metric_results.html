@@ -85,7 +85,7 @@
                 let type = typeMatch ? typeMatch[1] : "Unknown";
                 let title = typeMatch && typeMatch[2] ? typeMatch[2] : "";
 
-                block = block.replace("/\$/g", "$$");
+                block = block.replace(/\$/g, "$$");
 
                 console.log(block);
 
