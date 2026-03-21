@@ -85,7 +85,7 @@
                 let type = typeMatch ? typeMatch[1] : "Unknown";
                 let title = typeMatch && typeMatch[2] ? typeMatch[2] : "";
 
-                block.replace("$", "$$");
+                block = block.replace("/\$/g", "$$");
 
                 console.log(block);
 
@@ -95,7 +95,7 @@
                 // Wrap in $$ for MathJax display
                 div.innerHTML = `
         <strong>${type}${title ? ": " + title : ""}</strong>
-        <div class="math-content">${block}</div>
+        <div>${block}</div>
     `;
                 container.appendChild(div);
 
