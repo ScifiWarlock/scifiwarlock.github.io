@@ -70,24 +70,35 @@
     const button = document.getElementById("find");
 
     button.addEventListener("click", async () => {
-        const searchText = input.value;  // Get the user-entered text
-        console.log("User searched for:", searchText);
+    const searchText = input.value.trim();
+    console.log("User searched for:", searchText);
 
-        let data = "";
-        try {
+    let data = "";
+    try {
         const response = await fetch('database.txt');
-        const data = await response.text();
-        console.log("Looked for it", data);
-        } catch (err) {
-            console.error(err);
-        }
+        data = await response.text();
+        console.log("File loaded, length:", data.length);
+    } catch (err) {
+        console.error(err);
+        return;
+    }
 
-        const blocks = data.split("\\begin{");
-        const matches = blocks.filter(block => block.includes(searchText)).map(block => "\\begin{" + block);
+    // Split into blocks
+    const blocks = data.split("\\begin{");
 
-        localStorage.setItem("results", JSON.stringify(matches));
-        window.location.href = "metric_results.html";
-    });
+    // Filter blocks case-insensitively
+    const matches = blocks
+        .filter(block => block.toLowerCase().includes(searchText.toLowerCase()))
+        .map(block => "\\begin{" + block); // add back the \begin{
+
+    console.log("Matches found:", matches.length);
+
+    // Store results
+    localStorage.setItem("results", JSON.stringify(matches));
+    localStorage.setItem("lastSearch", searchText);
+
+    window.location.href = "results.html";
+});
 
         // You can do anything with searchText here:
         // e.g., filter content, query your JSON, redirect, etc.
