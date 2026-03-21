@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f9;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .result-card {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: #fff;
+            padding: 15px 20px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .result-card strong {
+            color: #2c3e50;
+            display: block;
+            margin-bottom: 10px;
+        }
+        .highlight {
+            background-color: yellow;
+        }
+        pre {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            margin: 0;
+            font-family: "Courier New", monospace;
+        }
+    </style>
+</head>
+<body>
+    <h1>Search Results</h1>
+    <div id="results-container"></div>
+
+    <script>
+        window.addEventListener("DOMContentLoaded", () => {
+            const container = document.getElementById("results-container");
+
+            // Retrieve search results from localStorage
+            const stored = localStorage.getItem("results");
+            const matches = stored ? JSON.parse(stored) : [];
+
+            // Also retrieve the search term to highlight
+            const searchTerm = localStorage.getItem("lastSearch") || "";
+
+            if (matches.length === 0) {
+                container.innerHTML = "<p>No results found.</p>";
+                return;
+            }
+
+            // Loop over each block and display it
+            matches.forEach((block, index) => {
+                const div = document.createElement("div");
+                div.classList.add("result-card");
+
+                // Attempt to extract the type and title from the block
+                const typeMatch = block.match(/\\begin\{(\w+)\}(?:\[(.*?)\])?/);
+                let type = typeMatch ? typeMatch[1] : "Unknown";
+                let title = typeMatch && typeMatch[2] ? typeMatch[2] : "";
+
+                // Highlight search term
+                let content = block.replace(new RegExp(searchTerm, "gi"), match => `<span class="highlight">${match}</span>`);
+
+                div.innerHTML = `<strong>${type}${title ? ": " + title : ""}</strong><pre>${content}</pre>`;
+                container.appendChild(div);
+            });
+        });
+    </script>
+</body>
+</html>

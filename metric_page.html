@@ -73,6 +73,7 @@
         const searchText = input.value;  // Get the user-entered text
         console.log("User searched for:", searchText);
 
+        let data = "";
         try {
         const response = await fetch('database.txt');
         const data = await response.text();
@@ -80,6 +81,12 @@
         } catch (err) {
             console.error(err);
         }
+
+        const blocks = data.split("\\begin{");
+        const matches = blocks.filter(block => block.includes(searchText)).map(block => "\\begin{" + block);
+
+        localStorage.setItem("results", JSON.stringify(matches));
+        window.location.href = "metric_results.html";
     });
 
         // You can do anything with searchText here:
