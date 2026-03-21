@@ -81,7 +81,7 @@
                 div.classList.add("result-card");
 
                 // Extract type and title
-                const typeMatch = block.match(/\\begin\{(?!enumerate)(\w+)\}(?:\[(.*?)\])?/);
+                const typeMatch = block.match(/\\begin\{(?!enumerate\b)(\w+)\}(?:\[(.*?)\])?/);
                 let type = typeMatch ? typeMatch[1] : "Unknown";
                 let title = typeMatch && typeMatch[2] ? typeMatch[2] : "";
 
