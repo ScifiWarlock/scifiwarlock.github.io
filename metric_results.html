@@ -1,109 +1,211 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
+
     <title>Search Results</title>
+
     <script>
+
   window.MathJax = {
+
   tex: {
+
     // inlineMath: [['$', '$'], ['\\(', '\\)']],
+
     // processEnvironments: true, // This allows \begin{thm} to work in text
-    // processRefs: true,
-    environments: {
-      thm: ["Theorem:", ""],
-      lem: ["Lemma", ""],
-      cor: ["Corollary:", ""],
-      defn: ["Definition:", ""],
-      axm: ["Axiom:", ""]
-    }
+
+    // processRefs: true
+
   },
+
+    environments: {
+
+      thm: ["\\bf Theorem:", ""],
+
+      lem: ["\\bf Lemma:", ""],
+
+      cor: ["\\bf Corollary:", ""],
+
+      defn: ["\\bf Definition:", ""],
+
+      axm: ["\\bf Axiom:", ""]
+
+    }
+
   };
+
 </script>
+
     <!-- MathJax -->
+
     <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
     <style>
+
         body {
+
             font-family: Arial, sans-serif;
+
             margin: 20px;
+
             background-color: #f4f4f9;
+
         }
+
         h1 {
+
             text-align: center;
+
             margin-bottom: 30px;
+
         }
+
         .result-card {
+
             border: 1px solid #ccc;
+
             border-radius: 8px;
+
             background-color: #fff;
+
             padding: 15px 20px;
+
             margin-bottom: 15px;
+
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+
         }
+
         .result-card strong {
+
             color: #2c3e50;
+
             display: block;
+
             margin-bottom: 10px;
+
         }
+
         .highlight {
+
             background-color: yellow;
+
         }
+
         pre {
+
             white-space: pre-wrap;
+
             word-wrap: break-word;
+
             margin: 0;
+
             font-family: "Courier New", monospace;
+
         }
+
     </style>
+
 </head>
+
 <body>
+
     <h1>Search Results</h1>
+
     <div id="results-container"></div>
 
+
+
     <script>
+
         window.addEventListener("DOMContentLoaded", () => {
+
             const container = document.getElementById("results-container");
 
+
+
             // Retrieve search results from localStorage
+
             const stored = localStorage.getItem("results");
+
             const matches = stored ? JSON.parse(stored) : [];
 
+
+
             // Retrieve the search term to highlight
+
             const searchTerm = localStorage.getItem("lastSearch") || "";
 
+
+
             if (matches.length === 0) {
+
                 container.innerHTML = "<p>No results found.</p>";
+
                 return;
+
             }
 
+
+
             matches.forEach((block, index) => {
+
                 const div = document.createElement("div");
+
                 div.classList.add("result-card");
 
+
+
                 // Extract type and title
+
                 const typeMatch = block.match(/\\begin\{(?!enumerate\b)(\w+)\}(?:\[(.*?)\])?/);
+
                 let type = typeMatch ? typeMatch[1] : "Unknown";
+
                 //let title = typeMatch && typeMatch[2] ? typeMatch[2] : "";
+
+
+
 
 
                 console.log(block);
 
+
+
                 // Highlight search term (case-insensitive)
+
                 let content = block.replace(new RegExp(searchTerm, "gi"), match => `<span class="highlight">${match}</span>`);
 
+
+
                 // Wrap in $$ for MathJax display
+
                 div.innerHTML = `
+
         <strong>${type}</strong>
+
         <div>${block}</div>
+
     `;
+
                 container.appendChild(div);
 
+
+
                 // Render MathJax for this block
-                MathJax.tyepsetPromise([div]).catch(err => console.error(err));
+
+                MathJax.typesetPromise([div]).catch(err => console.log(err));
+
             });
-        //    MathJax.startup.promise
-        // .then(() => MathJax.typesetPromise([container]))
-        // .catch(err => console.error(err));
+
         });
+
     </script>
+
 </body>
+
 </html>
