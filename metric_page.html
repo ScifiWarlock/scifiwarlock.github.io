@@ -88,7 +88,9 @@
 
     // Filter blocks case-insensitively
     const matches = blocks
-        .filter(block => block.toLowerCase().includes(searchText.toLowerCase()))
+        .filter(block => block.toLowerCase().includes(searchText.toLowerCase()) && 
+        (block.toLowerCase().includes("lem") || block.toLowerCase().includes("thm") ||
+    block.toLowerCase().includes("axm") || block.toLowerCase().include("defn") || block.toLowerCase().includes("cor")))
         .map(block => "\\begin{" + block); // add back the \begin{
 
     console.log("Matches found:", matches.length);
