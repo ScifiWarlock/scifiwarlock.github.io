@@ -85,13 +85,15 @@
                 let type = typeMatch ? typeMatch[1] : "Unknown";
                 let title = typeMatch && typeMatch[2] ? typeMatch[2] : "";
 
+                block.replace("$", "$$");
+
                 // Highlight search term (case-insensitive)
                 let content = block.replace(new RegExp(searchTerm, "gi"), match => `<span class="highlight">${match}</span>`);
 
                 // Wrap in $$ for MathJax display
                 div.innerHTML = `
         <strong>${type}${title ? ": " + title : ""}</strong>
-        <div class="math-content">\\[ ${block} \\]</div>
+        <div class="math-content">${block}</div>
     `;
                 container.appendChild(div);
 
