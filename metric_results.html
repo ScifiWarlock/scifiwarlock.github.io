@@ -87,7 +87,7 @@
 
                 block.replace("$", "$$");
 
-                system.out.println(block);
+                console.log(block);
 
                 // Highlight search term (case-insensitive)
                 let content = block.replace(new RegExp(searchTerm, "gi"), match => `<span class="highlight">${match}</span>`);
