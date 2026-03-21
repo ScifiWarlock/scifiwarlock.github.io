@@ -6,10 +6,10 @@
     <script>
   window.MathJax = {
   tex: {
-    // macros: {
-    //   RR: "{\\bf R}",
-    //   bold: ["{\\bf #1}", 1]
-    // },
+    inlineMath: [['$', '$'], ['\\(', '\\)']],
+    processEnvironments: true, // This allows \begin{thm} to work in text
+    processRefs: true
+  },
     environments: {
       thm: ["", ""],
       lem: ["", ""],
@@ -17,8 +17,7 @@
       defn: ["", ""],
       axm: ["", ""]
     }
-  }
-};
+  };
 </script>
     <!-- MathJax -->
     <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -85,7 +84,6 @@
                 let type = typeMatch ? typeMatch[1] : "Unknown";
                 let title = typeMatch && typeMatch[2] ? typeMatch[2] : "";
 
-                block = block.replace(/\$/g, "$$");
 
                 console.log(block);
 
