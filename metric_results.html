@@ -82,7 +82,7 @@
                 // Extract type and title
                 const typeMatch = block.match(/\\begin\{(?!enumerate\b)(\w+)\}(?:\[(.*?)\])?/);
                 let type = typeMatch ? typeMatch[1] : "Unknown";
-                let title = typeMatch && typeMatch[2] ? typeMatch[2] : "";
+                //let title = typeMatch && typeMatch[2] ? typeMatch[2] : "";
 
 
                 console.log(block);
@@ -92,7 +92,7 @@
 
                 // Wrap in $$ for MathJax display
                 div.innerHTML = `
-        <strong>${type}${title ? ": " + title : ""}</strong>
+        <strong>${type}</strong>
         <div>${block}</div>
     `;
                 container.appendChild(div);
