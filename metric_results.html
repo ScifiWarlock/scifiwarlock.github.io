@@ -98,10 +98,11 @@
                 container.appendChild(div);
 
                 // Render MathJax for this block
+                MathJax.tyepsetPromise([div]).catch(err => console.error(err));
             });
-           MathJax.startup.promise
-        .then(() => MathJax.typesetPromise([container]))
-        .catch(err => console.error(err));
+        //    MathJax.startup.promise
+        // .then(() => MathJax.typesetPromise([container]))
+        // .catch(err => console.error(err));
         });
     </script>
 </body>
