@@ -84,12 +84,11 @@
     }
 
     // Split into blocks
-    const blocks = data.split("\\begin{");
+    const blocks = data.split("---");
 
     // Filter blocks case-insensitively
     const matches = blocks
-        .filter(block => block.toLowerCase().includes(searchText.toLowerCase()))
-        .map(block => "\\begin{" + block); // add back the \begin{
+        .filter(block => block.toLowerCase().includes(searchText.toLowerCase())); // add back the \begin{
 
     console.log("Matches found:", matches.length);
 

@@ -36,13 +36,29 @@ int main(){
         //we check for a latex beginning marker and environment container markers
         if(parseText.find("\\begin") != string::npos 
         && hasEnvironment(parseText)){
-            begin_list.push_back(parseText);
+            //begin_list.push_back(parseText);
+            if(parseText.find("{lem}")!= string::npos){
+                begin_list.push_back("Lemma: ");
+            }
+            else if(parseText.find("{thm}") != string::npos){
+                begin_list.push_back("Theorem: ");
+            }
+            else if(parseText.find("{cor}")!= string::npos){
+                begin_list.push_back("Corollary: ");
+            }
+            else if(parseText.find("{defn}")!= string::npos){
+                begin_list.push_back("Definition: ");
+            }
+            else if(parseText.find("{axm}") != string::npos){
+                begin_list.push_back("Axiom: ");
+            }
             begin_found = true;
         }
         else if(begin_found){
             if(parseText.find("\\end") != string::npos 
             && hasEnvironment(parseText)){
-                begin_list.push_back(parseText);
+                //begin_list.push_back(parseText);
+                begin_list.push_back("---");
                 begin_found = false;
             }
             else{

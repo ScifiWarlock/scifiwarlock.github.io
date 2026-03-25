@@ -13,11 +13,13 @@
     processEnvironments: true, // This allows \begin{thm} to work in text
     processRefs: true,
     environments: {
-      thm: ["\\bf Theorem:", ""],
-      lem: ["\\bf Lemma:", ""],
-      cor: ["\\bf Corollary:", ""],
-      defn: ["\\bf Definition:", ""],
-      axm: ["\\bf Axiom:", ""]
+      thm: [" ", ""],
+      lem: [" ", ""],
+      cor: [" ", ""],
+      defn: [" ", ""],
+      axm: [" ", ""],
+      enumerate: [" ", " "],
+      text: [" ", " "]
     }
   },
   };
@@ -97,13 +99,9 @@
 </head>
 
 <body>
-
+    
     <h1>Search Results</h1>
-
     <div id="results-container"></div>
-
-
-
     <script>
 
         window.addEventListener("DOMContentLoaded", () => {
@@ -127,16 +125,22 @@
                 div.classList.add("result-card");
                 // Extract type and title
 
-                const typeMatch = block.match(/\\begin\{(?!enumerate\b)(\w+)\}(?:\[(.*?)\])?/);
+                //const typeMatch = block.match(/\\begin\{(?!enumerate\b, ?!equation*\b, ?!eqnarray\b)(\w+)\}(?:\[([\s\S]*?)\])?([\s\S]*?)\\end\{(?!enumerate\b)\1\}/);
 
-                let type = typeMatch ? typeMatch[1] : "Unknown";
+                // let type = typeMatch ? typeMatch[1] : "Unknown";
                 //let title = typeMatch && typeMatch[2] ? typeMatch[2] : "";
-                console.log(block);
+                //console.log(block);
                 // Highlight search term (case-insensitive)
                 let content = block.replace(new RegExp(searchTerm, "gi"), match => `<span class="highlight">${match}</span>`);
 
+                let content_arr = [];
+                
+                content = content.replaceAll("$", "$$");
+
+                console.log(content);
+
                 // Wrap in $$ for MathJax display
-                div.innerHTML = `<strong>${type}</strong><div>${block}</div> `;
+                div.innerHTML = `<div>${content}</div> `;
                 container.appendChild(div);
                 // Render MathJax for this block
                 MathJax.typesetPromise([div]).catch(err => console.log(err));
