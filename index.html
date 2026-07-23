@@ -55,6 +55,7 @@ MathJax = {
 <h1>Blog Posts</h1>
 <div class = "post" id = "Kelley vs Willard Subnets">
 <h2>Comparing Kelley vs Willard subnets!</h2>
+<h2>Section 0.4, Ordinary Differential Equations Notes</h2>
 <p>This is a section from my notes comparing Kelley and Willard subnets and discussing subnet theory for analysis. Let me know if anything
   is wrong or if there is anything I can improve!
 </p>
@@ -256,15 +257,28 @@ Now in terms of analysis, because of the total ordering of $\mathbb{R}$, we will
 <p>Hello testing equation. An adherent point is defined as:</p>
 <p>\[\forall r > 0: B(x, r) \cap A \neq \varnothing\]</p>
 </div>
+
+<div class="post" id="intro">
+<h2>Welcome to the blog!</h2>
+<p>Thank you so much for visiting my website! I plan to add various proofs or mathematical concepts that I find interesting to this blog.
+  Lot of times, it will be directly from my notes, so for more background information on the topic or further information, you can check
+  the projects tab for the full notes pdfs (though they may change if they are a work in progress).
+</p>
+
+<p>In order to navigate this blog, click the links on the right to the post that you are interested in reading. The post will automatically load
+  on this page. As always, let me know if something seems incorrect or if there is anything I can improve. Thank you once again!
+</p>
+</div>
 </div>
 </div>
 
 <div class = "split right">
 <h2>Post Links</h2>
-<a href="#Kelley vs Willard Subnets">Kelley vs Willard Subnets</a>
-<a href="#Diffeq">ODE Notes</a>
-<a href="#MathSearch">MathSearch!</a>
-<a href="#Test Post">First Blog Post!</a>
+<a href="#" onclick="showPost('Kelley vs Willard Subnets')">Kelley vs Willard Subnets</a>
+<a href="#" onclick="showPost('Diffeq')">ODE Notes</a>
+<a href="#" onclick="showPost('MathSearch')">MathSearch!</a>
+<a href="#" onclick="showPost('Test Post')">First Blog Post!</a>
+<a href = "#" onclick="showPost('intro')"><h3>Return to Intro-Page</h3></a>
 </div>
 
 
@@ -279,6 +293,8 @@ function showPost(id) {
 
     document.getElementById(id).classList.add("active");
 }
+
+showPost("intro");
 </script>
 
 </body>
