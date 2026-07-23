@@ -124,3 +124,11 @@ mjx-container {
   overflow: visible !important;
   line-height: 1.5 !important;
 }
+
+.post {
+    display: none;
+}
+
+.post.active {
+    display: block;
+}

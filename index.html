@@ -53,7 +53,8 @@ MathJax = {
 <div class = "split middle">
 <div style = "margin: 0">
 <h1>Blog Posts</h1>
-<h2 id = "Kelley vs Willard Subnets">Comparing Kelley vs Willard subnets!</h2>
+<div class = "post" id = "Kelley vs Willard Subnets">
+<h2>Comparing Kelley vs Willard subnets!</h2>
 <p>This is a section from my notes comparing Kelley and Willard subnets and discussing subnet theory for analysis. Let me know if anything
   is wrong or if there is anything I can improve!
 </p>
@@ -229,22 +230,32 @@ What this means is we can have a Kelley subsequence with indices such as $n_0 = 
 
 Now in terms of analysis, because of the total ordering of $\mathbb{R}$, we will deal with Willard subnets naturally, though I plan to explicitly use this terminology defined in this section regarding nets in the next section. That way, the connection between the concepts and nets is stronger.
 </p>
-<h2 id = "Diffeq">Differential Equations Notes!</h2>
+</div>
+
+<div class = "post" id = "Diffeq">
+<h2>Differential Equations Notes!</h2>
 <p>Hello World! I am updating this blog and website to keep track and record some of the progress I have made in the past few months. Lately I have been
   very interested in studying Ordinary Differential Equations jumping off function spaces and theorems like Arzela Ascoli in Analysis. I have added a set of notes
   in the projects tab (which are still a work in progress) which I will write for different concepts regarding differential equations. So far, I wanted to improve
   my understanding of some analytical concepts such as compactness, integration, and Arzela Ascoli through the lens of nets before jumping into Differential Equations.
   I will keep adding to this blog whenever I encounter maybe an interesting proof or result!
 </p>
-<h2 id = "MathSearch">MathSearch!</h2>
+</div>
+
+<div class = "post" id = "MathSearch">
+<h2>MathSearch!</h2>
 <p>MathSearch is a new feature I have made that takes my notes and lists lemmas, theorems, definitions, etc. It is still a heavy work in progress,
   but it can be used to quickly search up topics for example "Bolzano-Weierstrass" or "topology"! Some LaTeX symbols may not appear properly
   due to limitations of MathJAX3, but I will be updating the search to work with MathJAX4 which supports more symbols.
 </p>
-<h2 id="Test Post">First Blog Post!</h2>
+</div>
+
+<div class="post" id = "Test Post">
+<h2>First Blog Post!</h2>
 <p>I have made this blogpost to test out linking functionalities!</p>
 <p>Hello testing equation. An adherent point is defined as:</p>
 <p>\[\forall r > 0: B(x, r) \cap A \neq \varnothing\]</p>
+</div>
 </div>
 </div>
 
@@ -255,6 +266,20 @@ Now in terms of analysis, because of the total ordering of $\mathbb{R}$, we will
 <a href="#MathSearch">MathSearch!</a>
 <a href="#Test Post">First Blog Post!</a>
 </div>
+
+
+<script>
+function showPost(id) {
+
+    let posts = document.querySelectorAll(".post");
+
+    posts.forEach(post => {
+        post.classList.remove("active");
+    });
+
+    document.getElementById(id).classList.add("active");
+}
+</script>
 
 </body>
 </html>
