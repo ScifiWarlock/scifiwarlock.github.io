@@ -4,7 +4,23 @@
     <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
     <link rel="stylesheet" href="style.css">
+    <script>
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  }
+};
+</script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.18.1/dist/katex.min.css" integrity="sha384-1vdNCNel6Tx/NQa8IR1mGOGKsbGreCkOPfbtPPnUURJ5Tu2PRVfQ/7KLZC+Pi1p1" crossorigin="anonymous">
+
+     The loading of KaTeX is deferred to speed up page rendering -->
+    <!-- <script defer src="https://cdn.jsdelivr.net/npm/katex@0.18.1/dist/katex.min.js" integrity="sha384-ycJ6GAwiS15LoUPipwJOrWTvkUHl/YqELValBwI5I4awP1EeEQJYarj+w85ntcz7" crossorigin="anonymous"></script> -->
+
+    <!-- To automatically render math in text elements, include the auto-render extension: -->
+    <!-- <script defer src="https://cdn.jsdelivr.net/npm/katex@0.18.1/dist/contrib/auto-render.min.js" integrity="sha384-bjyGPfbij8/NDKJhSGZNP/khQVgtHUE5exjm4Ydllo42FwIgYsdLO2lXGmRBf5Mz" crossorigin="anonymous"
+        onload="renderMathInElement(document.body);"></script> -->
 </head>
 <body>
 
@@ -37,6 +53,182 @@
 <div class = "split middle">
 <div style = "margin: 0">
 <h1>Blog Posts</h1>
+<h2 id = "Kelley vs Willard Subnets">Comparing Kelley vs Willard subnets!</h2>
+<p>This is a section from my notes comparing Kelley and Willard subnets and discussing subnet theory for analysis. Let me know if anything
+  is wrong or if there is anything I can improve!
+</p>
+<p>
+<h3>Definition</h3>
+Given a directed set $D$, we call a subset $E \subseteq D$ cofinal if:
+\begin{equation*}
+\forall \alpha \in D, \exists \alpha' \in E: \alpha' \geq \alpha
+\end{equation*}
+
+Cofinality is key in defining the concept of subnets (for which we will explore two separate definitions). We also see the following connection with cluster points/frequently in a set:
+<h3>Lemma</h3>
+Given some topological space $X$ and some subset $A$, a net $\{x_\alpha\}_{\alpha \in D}$ in $X$ is frequently in $A$ if and only if there exists a cofinal subset $E$ such that:
+\begin{equation*}
+\forall \alpha \in E: x_\alpha \in A
+\end{equation*}
+
+This follows from definition 0.6 given above. If there exists a cofinal subset $E$, then:
+\begin{equation*}
+\forall \alpha \in D, \exists \alpha' \in E: \alpha' \geq \alpha
+\end{equation*}
+Combined with the fact that the image of $E$ is in $A$, we see that:
+\begin{equation*}
+\forall \alpha \in D, \exists \alpha' \geq x: x_{\alpha'} \in A
+\end{equation*}
+This only proves one direction, but the other direction is constructive in nature (to show the existence of $E$ simply follows from the definition of the net being frequently in $A$).
+
+<br>
+
+We also see that cofinal subsets are directed. Let $E$ be a cofinal subset of a directed set $D$. Then by subset relations, it inherits the ordering ($\geq$) and is reflexive. We need to prove property 3 in Definition 0.1 only.
+
+<br>
+
+Consider some $\alpha', \alpha'' \in E$. We get that there must be some $\alpha \in D$ such that:
+\begin{equation*}
+\alpha \geq \alpha' \land \alpha \geq \alpha''
+\end{equation*}
+Now by cofinality, there exists some $\alpha''' \in E$ such that $\alpha''' \geq \alpha$, so by transitivity, the directnedness of $E$ follows.
+
+<br>
+
+We say that a net converges if it is eventually in all open neighborhoods of $x$.
+
+<br>
+
+Let us examine the primary definition (<strong>General Topology, Kelley</strong>) we will use for a subnet:
+<h3>Definition</h3>
+Given a net $\{x_\alpha\}_{\alpha \in D}$ a subnet is the function $\omega \circ f$, where $f: E \xrightarrow{} D$ and $\omega$ for some directed set $(E, \succcurlyeq)$ was the initial net such that $\omega: D \xrightarrow{} X$.
+
+<br>
+
+We denote the subnet by $\{x_{f(\beta)}\}_{\beta \in E}$, which must adhere by the following property:
+\begin{equation*}
+\forall \alpha \in D, \exists \beta_0 \in E, \forall \beta \succcurlyeq \beta_0: f(\beta) \geq \alpha
+\end{equation*}
+
+Now consider some cofinal subset of $D$, which we will call $E$ with the same ordering $\geq$. Then cofinality gives us that:
+\begin{equation*}
+\forall \alpha \in D, \exists \beta_0 \in E: \beta_0 \geq \alpha \iff \forall \alpha \in D, \exists \beta_0 \in E, \forall \beta \geq \beta_0: \beta \geq \alpha
+\end{equation*}
+which follows from transitivity. So $\{x_\alpha\}_{\alpha \in E}$ is a subnet of the initial net with $f$ being the identity function, which is similar to convergence properties of subsequences and cluster points. Using this fact, we can extend Lemma 0.3 to the following:
+<h3>Lemma</h3>
+Given some topological space $X$ and some subset $A$, a net $\{x_\alpha\}_{\alpha \in D}$ in $X$ is frequently in $A$ if and only if there exists a subnet contained in $A$.   
+
+<h3>Proof</h3>
+The proof utilizes the results of the previous definition. Lemma 0.3 gave us equivalence with the existence of some cofinal subset $E \subseteq D$ that maps into $A$. A cofinal subset is essentially a subnet under composition with the identity function, thus giving our desired equivalence.
+
+<br>
+
+
+This can be extended to the notion of convergence, essentially bringing about a parallel lemma to Lemma 0.2 stated in terms of nets:
+<h3>Lemma</h3>
+$x \in X$ is a cluster point of $\{x_\alpha\}_{\alpha \in D}$ if and only if $\exists \{x_{\alpha'}\}_{\alpha' \in E}: x_{\alpha'} \xrightarrow{} x$
+
+<h3>Proof</h3>
+A cluster point can be defined as one for which the net is frequently in all neighborhoods of the point $U_x$. By the previous lemma, we can say that $x$ is a cluster point if and only if there is a subnet contained in each neighborhood, but that is quite weak and difficult to check. Let us define $E$ as the following:
+\begin{equation*}
+E := \{(\alpha', U_x) : x_{\alpha'} \in U_x\}
+\end{equation*}
+$\implies$: We show that $E$ is a directed set that brings about a subnet $\{x_{f(\alpha')}\}_{\alpha' \in E}$. $E$ is directed under the product ordering whereby:
+\begin{equation*}
+(\alpha', U_x) \succcurlyeq (\alpha_1', V_x) \iff \alpha_1' \geq \alpha' \land V_x \subseteq U_x
+\end{equation*}
+So taking any two $(\alpha', U_x)$ and $(\alpha_1', V_x)$ in $E$, we see that by the ordering of $D$:
+\begin{equation*}
+\exists \alpha_2' \in D: \alpha_2' \geq \alpha' \land \alpha_2' \geq \alpha_1'
+\end{equation*}
+and similarly for the neighborhoods, we have that:
+\begin{equation*}
+V_x \cap U_x \subseteq V_x \land V_x \cap U_x \subseteq U_x
+\end{equation*}
+Now the pair $(\alpha_2', V_x \cap U_x)$ may not belong to $E$, but by the cluster point definition for all neighborhoods of $x$, we have the existence of some $\alpha_3'$, such that:
+\begin{equation*}
+x_{\alpha_3'} \in V_x \cap U_x \implies (\alpha_3', V_x \cap U_x) \in E
+\end{equation*}
+Now that we have established that $E$ is directed (the other two properties trivially follow from subset inclusion and directedness of $D$). Now, we define the function $f: E \xrightarrow{} D$ such that:
+\begin{equation*}
+\forall (\alpha', U_x) \in E: f(\alpha', U_x) = \alpha'
+\end{equation*}
+We can show that this is a subnet (specifically a Kelley subnet, but later we will show it is also a Willard subnet). The existence of the cluster point $x$ gives us that $D$ is frequently in all neighborhoods:
+\begin{equation*}
+\forall U_x, \forall \alpha \in D, \exists \alpha_1 \geq \alpha: x_{\alpha_1} \in U_x \implies (\alpha_1, U_x) \in E
+\end{equation*} 
+\begin{equation*}
+\implies \forall U_x, \forall \alpha \in D, \exists (\alpha_1, U_x) \in E: f(\alpha_1, U_x) \geq \alpha
+\end{equation*}
+And by directedness of $E$, we see that:
+\begin{equation*}
+\implies \forall U_x, \forall \alpha \in D, \exists (\alpha_1, U_x) \in E, \forall (\alpha_2, V_x) \succcurlyeq (\alpha_1, U_x): f(\alpha_2, V_x) \geq \alpha
+\end{equation*}
+Thus proving that $\{x_{f(\alpha, V_x)}\}_{(\alpha, V_x) \in E}$ is a Kelley subnet. It follows that the subnet converges to $x$ as:
+\begin{equation*}
+\implies \forall U_x, \exists (\alpha_1, U_x) \in E, \forall (\alpha_2, V_x) \succcurlyeq (\alpha_1, U_x): x_{\alpha_2} \in V_x \subseteq U_x
+\end{equation*}
+as it is eventually in each neighborhood of $x$. We now prove the converse:
+
+$\impliedby:$ If $x$ is not a cluster point of the net, then:
+\begin{equation*}
+\exists U_x, \exists \alpha \in D, \forall \alpha_1 \geq \alpha: x_{\alpha_1} \notin U_x
+\end{equation*}
+Then for all possible subnets/cofinal subsets:
+\begin{equation*}
+\forall \alpha \in D, \exists \alpha_0' \in E, \forall \alpha' \geq \alpha_0': f(\alpha') \geq \alpha
+\end{equation*}
+we get that:
+\begin{equation*}
+\implies \exists U_x, \exists \alpha_0' \in E, \forall \alpha' \geq \alpha_0': f(\alpha') \in D \land f(\alpha') \geq \alpha \implies x_{f(\alpha')} \notin U_x
+\end{equation*}
+which means that any subnet is not eventually in a neighborhood of $x$, thus there exists no subnet that converges to $x$.
+
+Notice we can do the same proof in a first countable space with sequences; however, this construction will not give us a subsequence (because it is not a map from $\mathbb{N}$ to $\mathbb{N}$), rather a subnet, showing that a subsequence is a subnet but not necessarily the converse.
+
+<br>
+
+Let us examine a different definition of a subnet (<strong>General Topology, Willard</strong>):
+<h3>Definition</h3>
+Given a net $\{x_\alpha\}_{\alpha \in D}$, we define a subnet $\{x_{f(\alpha')}\}_{\alpha' \in E}$ by the following conditions:
+<br>
+1. $\forall \alpha \in D, \exists \alpha_0' \in E, f(\alpha_0') \geq \alpha$
+<br>
+2. $f: E \xrightarrow{} D$ is order preserving such that:
+\begin{equation*}
+\forall \alpha_0', \alpha_1' \in E: \alpha_0' \succcurlyeq \alpha_1' \implies f(\alpha_0') \geq f(\alpha_1')
+\end{equation*}
+
+The Willard definition implies the Kelley definition (we can use condition two to derive the Kelley condition), however the converse is not necessarily true.
+
+<br>
+
+The Willard definition is strictly stronger with the order preserving function, but the intuition behind both is that the indexing terms $f(E)$ go "further" in $D$. Our traditional definition of a subsequence is a Willard subnet, but it can possibly be relaxed to fit Kelley's definition.
+
+<br>
+
+We write such a condition as follows:
+<h3>Definition</h3>
+We define a (Willard) subsequence as $\{x_{n_k}\}_{k \in \mathbb{N}}$ where $\{n_k\}_{k \in \mathbb{N}}$ is a strictly increasing sequence. In other words, we have a function:
+\begin{equation*}
+\exists f: \mathbb{N} \xrightarrow{} \mathbb{N} \ \text{such that } \forall k, j \in \mathbb{N}: k > j \implies f(k) = n_k > n_j = f(j)
+\end{equation*}
+The first condition is satisfied the condition that $\forall k \in \mathbb{N}: n_k \geqslant k$, which can be proven inductively.
+
+<br>
+
+We define a (Kelley) subsequence as $\{x_{n_k}\}_{k \in \mathbb{N}}$ where for $\{n_k\}_{k \in \mathbb{N}}$, we have a that:
+\begin{equation*}
+\forall n \in \mathbb{N}, \exists k_0 \in \mathbb{N}, \forall k > k_0: n_k > n
+\end{equation*}
+Note that Kelley does use $\geqslant$ in this definition, however this effectively means a singular value of a single index can create a subsequence. 
+
+What this means is we can have a Kelley subsequence with indices such as $n_0 = 1, n_1 = 3, n_2 = 2$, while this would not be allowed in a Willard subsequence.
+
+<br>
+
+Now in terms of analysis, because of the total ordering of $\mathbb{R}$, we will deal with Willard subnets naturally, though I plan to explicitly use this terminology defined in this section regarding nets in the next section. That way, the connection between the concepts and nets is stronger.
+</p>
 <h2 id = "Diffeq">Differential Equations Notes!</h2>
 <p>Hello World! I am updating this blog and website to keep track and record some of the progress I have made in the past few months. Lately I have been
   very interested in studying Ordinary Differential Equations jumping off function spaces and theorems like Arzela Ascoli in Analysis. I have added a set of notes
@@ -58,6 +250,7 @@
 
 <div class = "split right">
 <h2>Post Links</h2>
+<a href="#Kelley vs Willard Subnets">Kelley vs Willard Subnets</a>
 <a href="#Diffeq">ODE Notes</a>
 <a href="#MathSearch">MathSearch!</a>
 <a href="#Test Post">First Blog Post!</a>
