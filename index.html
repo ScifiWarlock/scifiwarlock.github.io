@@ -69,6 +69,20 @@ MathJax = {
 </div>
 <div class = "post" id = "RS_Criteria">
 <h2>Two Riemann-Stieltjes Integrability Criteria</h2>
+<p>The Riemann Integral is an integral with respect to partitions on the $x$-axis, so we define a Riemann Sum for some partition $\Pi$ as:
+\begin{equation*}
+R(f, \Pi) \coloneq \sum_{i = 1}^{n}f(t_i^*)(t_i - t_{i-1})
+\end{equation*}
+where $t_i^*$ is the chosen marked point in the partition interval $[t_{i-1}, t_i]$. Now the Riemann-Stieltjes integral integrates with respect to an integrator $g$ for an $x$-axis partition.
+</p>
+<p>
+So a Riemann-Stieltjes sum would be of the following form for some partition $\Pi$:
+\begin{equation*}
+S(f, g, \Pi) \coloneq \sum_{i=1}^{n}f(t_i^*)(g(t_i) - g(t_{i-1}))
+\end{equation*}
+so in essence, it is the integral of one function with respect to another. We call $f$ the integrand and $g$ the integrator. The Riemann Integral is a specific case
+where $g$ is the identity function.
+</p>
 <p>There exist two criteria to determine whether some function is Riemann Stieltjes integrable.</p>
 <p>Consider the integrand $f$ and the integrator $g$ on some compact interval $[a, b]$ in the reals, and $P$ the set of finite partitions of the interval. 
   
