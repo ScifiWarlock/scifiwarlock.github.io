@@ -55,6 +55,33 @@ MathJax = {
 <div class = "split middle">
 <div style = "margin: 0">
 <h1>Blog Posts</h1>
+<div class = "post" id = "RS_Criteria">
+<h2>Two Riemann-Stieltjes Integrability Criteria</h2>
+<p>There exist two criteria to determine whether some function is Riemann Stieltjes integrable.</p>
+<p>Consider the integrand $f$ and the integrator $g$ on some compact interval $[a, b]$ in the reals, and $P$ the set of finite partitions of the interval. 
+  
+Then one criterion is:
+\begin{equation*}
+\forall \epsilon > 0, \exists \Pi_\epsilon \in P, \forall \Pi \leq \Pi_\epsilon: S(f, g, \Pi) \in B\left(\int_{a}^{b}fdg, \epsilon\right)
+\end{equation*}
+where $\Pi \leq \Pi_\epsilon$ iff $||\Pi|| \leqslant ||\Pi_\epsilon||$.
+</p>
+<p>The other criterion is:
+\begin{equation*}
+\forall \epsilon > 0, \exists \Pi_\epsilon \in P, \forall \Pi \supseteq \Pi_\epsilon: S(f, g, \Pi) \in B\left(\int_{a}^{b}fdg, \epsilon\right)
+\end{equation*}
+</p>
+<p>The difference is that the first criterion tells us that $f$ is Riemann-Stieltjes integrable with respect to $g$ if and only if it is the limit of the
+net of Riemann-Stieltjes sums. The second criterion tells us that it is integrable if and only if it is a cluster point of such a net. So we can see that
+the first criterion (by definition) implies the second, but not necessarily the other way around.
+</p>
+<p>One thing I want to explore is that in the case of Riemann integration, the converse does hold true. Then what sufficient conditions enable us to
+  make the same conclusion for Riemann-Stieltjes integrals? I am hypothesizing it is continuity of either the integrator or integrand and bounded total variation
+  of the other. To read the proofs more in detail, you can take a look at Chapter 3 in the Ordinary Differential Equations notes. Let me know if
+  there is any error or if there is anything I can improve!
+</p>
+</div>
+
 <div class = "post" id = "Kelley vs Willard Subnets">
 <h2>Comparing Kelley vs Willard subnets!</h2>
 <h2>Section 0.4, Ordinary Differential Equations Notes</h2>
@@ -286,6 +313,7 @@ Classes ✅
 
 <!-- MathSearch ❌ (currently down; will bring back up after updating content)</p> -->
 <h2>Post Links</h2>
+<a href="#" onclick="showPost('RS_Criteria')">Two Riemann-Stieltjes Criteria</a>
 <a href="#" onclick="showPost('Kelley vs Willard Subnets')">Kelley vs Willard Subnets</a>
 <a href="#" onclick="showPost('Diffeq')">ODE Notes</a>
 <a href="#" onclick="showPost('MathSearch')">MathSearch!</a>
