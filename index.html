@@ -102,7 +102,11 @@ net of Riemann-Stieltjes sums. The second criterion tells us that it is integrab
 the first criterion implies the second, but not necessarily the other way around.
 </p>
 <p>We can prove that the first criterion implies the second because the second considers a subnet of $\{S(f, g, \Pi)\}_{\Pi \in P}$. Since the net converges, the any subnet converges. Alternatively
-  considering the directed set $(P, \supseteq)$, we can see that criterion 2 is a convergence criterion under the $\supseteq$ direction.
+  considering the directed set $(P, \supseteq)$, we can see that criterion 2 is a convergence criterion under the $\supseteq$ direction, and since:
+\begin{equation*}
+Pi_1 \supseteq \Pi_0 \implies ||\Pi_1|| \leqslant ||\Pi_0||
+\end{equation*}
+then, the implication follows.
 </p>
 <p>One thing I want to explore is that in the case of Riemann integration, the converse does hold true. Then what sufficient conditions enable us to
   make the same conclusion for Riemann-Stieltjes integrals? I am hypothesizing it is continuity of either the integrator or integrand and bounded total variation
