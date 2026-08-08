@@ -21,57 +21,65 @@ int main(){
     string parseText;
 
     ofstream MyOutFile("database.txt");
+
+    vector<string> files = {"C:\\Users\\rakmo\\OneDrive\\Desktop\\Misc Math\\Analysis_Measure_Theory\\DifferentialEquations.tex",
+        "C:\\Users\\rakmo\\OneDrive\\Desktop\\Misc Math\\Analysis_Measure_Theory\\131BHNotes.tex", 
+        "C:\\Users\\rakmo\\OneDrive\\Desktop\\Analysis Notes\\notes.tex"};
     
-    ifstream MyReadFile("C:\\Users\\rakmo\\OneDrive\\Desktop\\Analysis Notes\\notes.tex");
+    for(int i = 0; i < files.size(); i++){
+    
+        ifstream MyReadFile(files[i]);
 
-    //this is a vector we use to store promising lines
-    vector<string> begin_list;
+        //this is a vector we use to store promising lines
+        vector<string> begin_list;
 
-    //this signifies if we have found a proper begin; we then just need to find an end
-    bool begin_found = false;
+        //this signifies if we have found a proper begin; we then just need to find an end
+        bool begin_found = false;
 
-    while (getline (MyReadFile, parseText)) {
-        // Output the text from the file
-        cout << parseText << endl;
-        //we check for a latex beginning marker and environment container markers
-        if(parseText.find("\\begin") != string::npos 
-        && hasEnvironment(parseText)){
-            //begin_list.push_back(parseText);
-            if(parseText.find("{lem}")!= string::npos){
-                begin_list.push_back("Lemma: ");
-            }
-            else if(parseText.find("{thm}") != string::npos){
-                begin_list.push_back("Theorem: ");
-            }
-            else if(parseText.find("{cor}")!= string::npos){
-                begin_list.push_back("Corollary: ");
-            }
-            else if(parseText.find("{defn}")!= string::npos){
-                begin_list.push_back("Definition: ");
-            }
-            else if(parseText.find("{axm}") != string::npos){
-                begin_list.push_back("Axiom: ");
-            }
-            begin_found = true;
-        }
-        else if(begin_found){
-            if(parseText.find("\\end") != string::npos 
+        while (getline (MyReadFile, parseText)) {
+            // Output the text from the file
+            cout << parseText << endl;
+            //we check for a latex beginning marker and environment container markers
+            if(parseText.find("\\begin") != string::npos 
             && hasEnvironment(parseText)){
                 //begin_list.push_back(parseText);
-                begin_list.push_back("---");
-                begin_found = false;
+                if(parseText.find("{lem}")!= string::npos){
+                    begin_list.push_back("Lemma: ");
+                }
+                else if(parseText.find("{thm}") != string::npos){
+                    begin_list.push_back("Theorem: ");
+                }
+                else if(parseText.find("{cor}")!= string::npos){
+                    begin_list.push_back("Corollary: ");
+                }
+                else if(parseText.find("{defn}")!= string::npos){
+                    begin_list.push_back("Definition: ");
+                }
+                else if(parseText.find("{axm}") != string::npos){
+                    begin_list.push_back("Axiom: ");
+                }
+                begin_found = true;
             }
-            else{
-                begin_list.push_back(parseText);
+            else if(begin_found){
+                if(parseText.find("\\end") != string::npos 
+                && hasEnvironment(parseText)){
+                    //begin_list.push_back(parseText);
+                    begin_list.push_back("---");
+                    begin_found = false;
+                }
+                else{
+                    begin_list.push_back(parseText);
+                }
             }
         }
-    }
 
-    for(string lines : begin_list){
-        MyOutFile << lines << endl;
-    }
+        for(string lines : begin_list){
+            MyOutFile << lines << endl;
+        }
 
+         MyReadFile.close();
 
-    MyReadFile.close();
+    };
+
     MyOutFile.close();
 }

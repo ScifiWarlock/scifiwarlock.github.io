@@ -12,7 +12,6 @@
   top: 0;
   width: 100%;
   text-align: center;
-  z-index: 1000;
   background-color: #f8f4e8;
 }
 
@@ -53,4 +52,7 @@
   width: 100%;        /* fill content block width */
   height: 800px;      /* adjust as needed */
   border: 1px solid #ccc;
+}
+html {
+    scrollbar-gutter: stable;
 }

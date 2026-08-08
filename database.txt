@@ -1,4 +1,630 @@
 Definition: 
+We define an ordering relation $\geq$ for the set $D$ and call it a directed set under the following conditions:
+\begin{enumerate}
+\item Reflexive: $\forall x \in D: x \geq x$
+\item Transitive: $\forall x, y, z \in D: x \geq y \land y \geq z \implies x \geq z$
+\item Directed: $\forall x, y \in D, \exists z \in D: (z \geq x \land z \geq y) \lor (x \geq z \land y \geq z)$
+\end{enumerate}
+---
+Lemma: 
+Given $(D, \geq)$ an upward directed set, then for all finite subsets $S$ of $D$:
+\begin{equation*}
+\forall S \subseteq D, \exists z \in D, \forall x \in S: z \geq x \iff \forall x, y \in D, \exists z \in D: z \geq x \land z \geq y 
+\end{equation*}
+In other words, all finite subsets of the directed set admit an upper bound.
+---
+Definition: 
+A net is a function $\omega: D \xrightarrow{} X$ where $D$ is a directed set and $X$ is a topological space.  
+---
+Definition: 
+The tail of a net at $\alpha_0$ is defined as:
+\begin{equation*}
+T_{\alpha_0} \coloneq \{x_\alpha : \alpha \geq \alpha_0\}
+\end{equation*}  
+---
+Definition: 
+A sequence frequently visits a set $A$ if:
+\begin{equation*}
+\forall n_0 \geqslant 0, \exists n \geqslant n_0: x_n \in A
+\end{equation*}
+---
+Definition: 
+$x$ is a cluster point of $\{x_n\}_{n \in \mathbb{N}}$ if $\{x_n\}_{n \in \mathbb{N}}$ frequently visits all open neighborhoods of $x$.
+---
+Lemma: 
+$x$ is a cluster point of $\{x_n\}_{n \in \mathbb{N}} \in X^\mathbb{N}$ if and only if $\exists \{n_k\}_{k \in \mathbb{N}} \in \mathbb{N}^\mathbb{N}: x_{n_k} \xrightarrow{} x$  
+---
+Definition: 
+% $x$ is a limit-cluster point of $\{x_n\}_{n \in \mathbb{N}} \in X^\mathbb{N}$ if $\{x_n\}_{n \in \mathbb{N}}$ frequently visits all punctured open neighborhoods of $x$.
+---
+Lemma: 
+% $x$ is a limit-cluster point of $\{x_n\}_{n \in \mathbb{N}} \in X^\mathbb{N}$ if and only if $\exists \{n_k\}_{k \in \mathbb{N}}: x_{n_k} \xrightarrow{} x \land (\forall k \in \mathbb{N}: x_{n_k} \neq x)$  
+---
+Definition: 
+Given a directed set $D$, we call a subset $E \subseteq D$ cofinal if:
+\begin{equation*}
+\forall \alpha \in D, \exists \alpha' \in E: \alpha' \geq \alpha
+\end{equation*}
+---
+Lemma: 
+Given some topological space $X$ and some subset $A$, a net $\{x_\alpha\}_{\alpha \in D}$ in $X$ is frequently in $A$ if and only if there exists a cofinal subset $E$ such that:
+\begin{equation*}
+\forall \alpha \in E: x_\alpha \in A
+\end{equation*}
+---
+Definition: 
+Given a net $\{x_\alpha\}_{\alpha \in D}$ a subnet is the function $\omega \circ f$, where $f: E \xrightarrow{} D$ and $\omega$ for some directed set $(E, \succcurlyeq)$ was the initial net such that $\omega: D \xrightarrow{} X$.\\
+
+We denote the subnet by $\{x_{f(\beta)}\}_{\beta \in E}$, which must adhere by the following property:
+\begin{equation*}
+\forall \alpha \in D, \exists \beta_0 \in E, \forall \beta \succcurlyeq \beta_0: f(\beta) \geq \alpha
+\end{equation*}
+---
+Lemma: 
+Given some topological space $X$ and some subset $A$, a net $\{x_\alpha\}_{\alpha \in D}$ in $X$ is frequently in $A$ if and only if there exists a subnet contained in $A$.   
+---
+Lemma: 
+$x \in X$ is a cluster point of $\{x_\alpha\}_{\alpha \in D}$ if and only if $\exists \{x_{f(\alpha')}\}_{\alpha' \in E}: x_{f(\alpha')} \xrightarrow{} x$
+---
+Definition: 
+Given a net $\{x_\alpha\}_{\alpha \in D}$, we define a subnet $\{x_{f(\alpha')}\}_{\alpha' \in E}$ by the following conditions:
+\begin{enumerate}
+\item $\forall \alpha \in D, \exists \alpha_0' \in E, f(\alpha_0') \geq \alpha$
+\item $f: E \xrightarrow{} D$ is order preserving such that:
+\begin{equation*}
+\forall \alpha_0', \alpha_1' \in E: \alpha_0' \succcurlyeq \alpha_1' \implies f(\alpha_0') \geq f(\alpha_1')
+\end{equation*}
+\end{enumerate}   
+---
+Definition: 
+We define a (Willard) subsequence as $\{x_{n_k}\}_{k \in \mathbb{N}}$ where $\{n_k\}_{k \in \mathbb{N}}$ is a strictly increasing sequence. In other words, we have a function:
+\begin{equation*}
+\exists f: \mathbb{N} \xrightarrow{} \mathbb{N} \ \text{such that } \forall k, j \in \mathbb{N}: k > j \implies f(k) = n_k > n_j = f(j)
+\end{equation*}
+The first condition is satisfied the condition that $\forall k \in \mathbb{N}: n_k \geqslant k$, which can be proven inductively.\\
+
+We define a (Kelley) subsequence as $\{x_{n_k}\}_{k \in \mathbb{N}}$ where for $\{n_k\}_{k \in \mathbb{N}}$, we have a that:
+\begin{equation*}
+\forall n \in \mathbb{N}, \exists k_0 \in \mathbb{N}, \forall k > k_0: n_k > n
+\end{equation*}
+Note that Kelley does use $\geqslant$ in this definition, however this effectively means a singular value of a single index can create a subsequence. 
+---
+Theorem: 
+$f: \mathbb{R} \xrightarrow{} \mathbb{R}$ is continuous at $x_0$ if and only if for all $\delta$-nets:
+\begin{equation*}
+\forall \{x_\delta\}_{\delta > 0}: x_\delta \xrightarrow{} x_0 \implies f(x_\delta) \xrightarrow{} f(x_0)
+\end{equation*}
+---
+Lemma: 
+The closure of a set $A$ is equal to all of its adherent points. 
+---
+Lemma: 
+$x$ is a limit point of $E$ if and only if
+\begin{equation*}
+\exists \{x_n\}_{n \in \mathbb{N}} \in (E \setminus \{x\})^\mathbb{N}: x_n \xrightarrow{} x
+\end{equation*}
+---
+Definition: 
+An $\omega$-limit point of a set $E$ is one for which there exists a countably infinite number of points of $E$ within each punctured $\epsilon$-ball around $x$.
+---
+Definition: 
+$\overline{E}$ is the closure of $E$ if and only if
+\begin{equation*}
+\forall \{x_n\}_{n \in \mathbb{N}} \in E^\mathbb{N}: x_n \xrightarrow{} x \implies x \in \overline{E}
+\end{equation*}
+---
+Lemma: 
+\begin{equation*}
+x \ \text{is a limit point of } S \iff \exists \{n_k\}_{k \in \mathbb{N}} \in \mathbb{N}^\mathbb{N}: x_{n_k} \xrightarrow{} x \land (\forall k \in \mathbb{N}: x_{n_k} \neq x)
+\end{equation*}
+---
+Lemma: 
+% If $S \coloneq \{x_n : n \in \mathbb{N}\}$ is countably infinite for some $\{x_n\}_{n \in \mathbb{N}} \in X^\mathbb{N}$, then:
+% \begin{equation*}
+% x \ \text{is a limit point of } S \iff x \ \text{is a limit-cluster point of } \{x_n\}_{n \in \mathbb{N}}
+% \end{equation*}
+---
+Lemma: 
+If $\{x_n\}_{n \in \mathbb{N}} \in X^\mathbb{N}$ consists of all DISTINCT terms (each term appears at most once), then:
+\begin{equation*}
+x \ \text{is a limit point of } S \iff x \ \text{is a cluster point of } \{x_n\}_{n \in \mathbb{N}}  
+\end{equation*} 
+---
+Theorem: 
+Any bounded sequence has a convergent subsequence.
+---
+Definition: 
+A sequentially compact interval of $\mathbb{R}$ is one for which every sequence has a convergent subsequence that converges to a point within the interval. 
+---
+Theorem: 
+An interval of $\mathbb{R}$ is sequentially compact if and only if it is closed and bounded. 
+---
+Lemma: 
+For any set $I \subseteq \mathbb{R}$, $I$ is bounded if and only if it is totally bounded (ONLY for $\mathbb{R}$).
+---
+Definition: 
+A set $K \subseteq \mathbb{R}$ is limit point compact if for all infinite (countably or uncountably) sets $E \subseteq K$, there exists a limit point of $E$ in $K$.
+---
+Theorem: 
+A set $K$ is limit point compact if and only if it is sequentially compact in $\mathbb{R}$.
+---
+Theorem: 
+A set $K$ is limit point compact if and only if it is cluster-point compact in a $T_1$ space.
+---
+Definition: 
+Given some subset $E$ of a topological space $X$, an open cover of $E$ is a collection:
+\begin{equation*}
+\{O_\alpha: \alpha \in I \land O_\alpha \in \uptau_X\}
+\end{equation*}
+such that:
+\begin{equation*}
+E \subseteq \bigcup_{\alpha \in I} O_\alpha
+\end{equation*}
+---
+Theorem: 
+Given a general topological space $X$, if $X$ is topologically compact, then it is limit point compact.
+---
+Lemma: 
+If $\Pi_1 \supseteq \Pi_0$, then $||\Pi_1|| \leqslant ||\Pi_0||$.
+---
+Definition: 
+The function $f$ is Riemann-Stieltjes integrable on $[a, b]$ (with respect to $g$) if:
+\begin{equation*}
+\forall \epsilon > 0, \exists \delta_0 > 0, \forall \Pi: ||\Pi|| < \delta_0 \implies \left|S(f, g, \Pi) - \int_{a}^{b}fdg\right| < \epsilon
+\end{equation*}
+---
+Lemma: 
+The conditions in Definition 3.1 and the convergence of $\{S(f, g, \Pi)\}_{\Pi \in P}$ are equivalent.
+---
+Definition: 
+The function $f$ is Riemann-Stieltjes integrable on $[a, b]$ with respect to $g$ if
+\begin{equation*}
+\forall \epsilon > 0, \exists \Pi_\epsilon \in P, \forall \Pi \supseteq \Pi_\epsilon: S(f, g, \Pi) \in B\left(\int_{a}^{b}fdg, \epsilon\right)
+\end{equation*}
+---
+Theorem: 
+If $f$ is Riemann-Stieltjes integrable with respect to $g$ by the criterion in Definition 3.1, it is Riemann-Stieltjes integrable by the criterion in Definition 3.2.
+---
+Lemma: 
+If $f$ is Riemann integrable by criterion (2), then it is bounded on $[a, b]$. 
+---
+Lemma: 
+If $f$ is Riemann integrable by criterion (1), then it is bounded on $[a, b]$.
+---
+Theorem: 
+If $f$ is Riemann integrable, then:
+\begin{equation*}
+\forall \epsilon > 0, \exists \Pi_\epsilon \in P, \forall \Pi \leq \Pi_\epsilon: R(f, \Pi) \in B\left(\int_{a}^{b}fdx, \epsilon\right)
+\end{equation*}
+\begin{equation*}
+\iff \forall \epsilon > 0, \exists \Pi_\epsilon \in P, \forall \Pi \supseteq \Pi_\epsilon: R(f, \Pi) \in B\left(\int_{a}^{b}fdx, \epsilon\right)
+\end{equation*}
+---
+Lemma: 
+% A function $f$ is continuously differentiable if and only if it is uniformly differentiable on $[a, b]$.
+---
+Lemma: 
+If $f$ is of bounded variation on $[a, b]$, then $f$ is bounded on $[a, b]$.
+---
+Definition: 
+Given the following limits:
+\begin{equation*}
+U(f, g, \Pi) \xrightarrow{} \overline{\int_{a}^{b}}f dg
+\end{equation*}
+\begin{equation*}
+L(f, g, \Pi) \xrightarrow{} \underline{\int_{a}^{b}}f dg
+\end{equation*}
+then $f$ is Darboux-Stieltjes integrable on $[a, b]$ with respect to $g$ if:
+\begin{equation*}
+\overline{\int_{a}^{b}}fdg = \underline{\int_{a}^{b}}fdg
+\end{equation*}
+---
+Lemma: 
+If $f$ is bounded on $[a, b]$, then the upper and lower integrals always exist, and:
+\begin{equation*}
+\overline{\int_{a}^{b}}fdg \coloneq \inf\{U(f, g, \Pi) : \Pi \in P\}
+\end{equation*}
+\begin{equation*}
+\underline{\int_{a}^{b}}fdg \coloneq \sup\{L(f, g, \Pi) : \Pi \in P\}
+\end{equation*}
+---
+Lemma: 
+If $f$ is bounded on $[a, b]$, then the upper and lower integrals must exist.
+---
+Theorem: 
+A function $f: \mathbb{R} \xrightarrow{} \mathbb{R}$ is Riemann integrable if and only if the outer measure of the set of its discontinuities is $0$.
+---
+Lemma: 
+If the limit $L$ exists at some $x \in \overline{\text{Dom}(f)}$, then $L$ is unique.
+---
+Lemma: 
+\begin{equation*}
+\lim_{y \xrightarrow{} x}f(y) \ \text{exists} \iff \lim_{\delta \xrightarrow{} 0^+}\sup_{y \in B(x, \delta) \setminus \{x\}}f(y) = \lim_{\delta \xrightarrow{} 0^+}\inf_{y \in B(x, \delta)\setminus\{x\}}f(y)
+\end{equation*}
+---
+Definition: 
+We now define the oscillation on a set $A \subseteq \text{Dom}(f)$ as:
+\begin{equation*}
+\text{osc}(f, A) \coloneq \sup_{x, y \in A}|f(x) - f(y)| = \sup_{y \in A}f(y) - \inf_{y \in A}f(y)
+\end{equation*}
+The latter expression of which will be useful for integration.
+---
+Corollary: 
+\begin{equation*}
+\lim_{y \xrightarrow{} x}f(y) \ \text{exists} \iff \text{osc}_{xL}(f) = 0
+\end{equation*}
+---
+Lemma: 
+$\lim_{z \xrightarrow{} x}f(z) \ \text{exists} \iff \forall \epsilon > 0, \exists \delta > 0, \forall z, y \in B(x, \delta) \setminus \{x\}: |f(z) - f(y)| < \epsilon$
+---
+Lemma: 
+Discontinuities of the first kind are always countable. 
+---
+Lemma: 
+\begin{equation*}
+f \ \text{is continuous at } x \iff \lim_{y \xrightarrow{} x} f(y) = f(x)
+\end{equation*}
+---
+Lemma: 
+$f$ is continuous at $x$ if and only if $\text{osc}_x(f) = 0$
+---
+Definition: 
+A function $f$ is continuous iff $\forall O \subseteq \text{Ran}(f) \land \ \text{open}: f^{-1}(O) \ \text{open}$.
+---
+Lemma: 
+Given $f$ continuous and $f: X \xrightarrow{} Y$. Then if $X$ is compact, $\text{Ran}(f) = Y$ is also compact.
+---
+Theorem: 
+For any continuous $f: X \xrightarrow{} \mathbb{R}$, if $X$ compact, then $f$ achieves its minimum and maximum on $f(X)$. 
+---
+Definition: 
+A topological space $X$ is disconnected if there exists a separation such that:
+\begin{equation*}
+\exists A, B \subseteq X: A \ \text{open} \land B \ \text{open} \ \land A \cup B = X \land A \cap B = \varnothing
+\end{equation*}
+---
+Theorem: 
+We now introduce the Intermediate Value Theorem in terms of topological spaces. Let $f: X \xrightarrow{} Y$:
+\begin{equation*}
+f \ \text{continuous} \land X \ \text{connected} \implies Y \ \text{connected}
+\end{equation*}
+---
+Corollary: 
+Let $f$ be continuous on some interval $[a, b]$. If there exists some $c \in [a, b]$ such that if $f(a) < 0$ and $f(b) > 0$, then $\exists c \in [a, b]: f(c) = 0$.
+---
+Lemma: 
+% Let $X$ and $Y$ be metric spaces and $f: X \xrightarrow{} Y$ such that $\text{Dom}(f) = X$ and $\text{Ran}(f) = Y$. Assuming $f$ to be continuous, prove
+% \begin{equation*}
+% \forall A \subseteq X: A \ \text{dense in } X \implies f(A) \ \text{dense in } Y
+% \end{equation*}
+---
+Definition: 
+A modulus of continuity is a function $\omega: [0, \infty) \xrightarrow{} [0, \infty)$ such that it is non-decreasing and $\omega(0) = 0$.
+---
+Lemma: 
+$f  \ \text{continuous} \land X  \ \text{compact} \implies f \ \text{uniformly continuous}$
+---
+Lemma: 
+Let $X$ and $Y$ be metric spaces with $X$ totally bounded. Prove that for each $f: X \xrightarrow{} Y$
+\begin{equation*}
+f \ \text{ Cauchy continuous} \implies f \ \text{uniformly continuous}
+\end{equation*}
+---
+Lemma: 
+A monotone function (without loss of generality consider monotonically increasing) can only have discontinuities of the first kind.
+---
+Lemma: 
+Let $f: \mathbb{R} \xrightarrow{} \mathbb{R}$ be non-decreasing with $\text{Dom}(f) = \mathbb{R}$. Prove that $x \mapsto f(x^+)$ is right continuous while $x \mapsto f(x^-)$ is left continuous with both functions non-decreasing. In addition, prove that
+\begin{equation*}
+\forall x \in \mathbb{R}: f(x^-) \leqslant f(x) \leqslant f(x^+)
+\end{equation*}
+and
+\begin{equation*}
+\forall x, y \in \mathbb{R}: x < y \implies f(x^+) \leqslant f(y^-)
+\end{equation*}
+---
+Lemma: 
+% For real $a < b$, let $f: [a, b] \xrightarrow{} \mathbb{R}$ (with $\text{Dom}(f) = [a, b]$) be a function of bounded variation. Define $h: [a, b] \xrightarrow{} \mathbb{R}$ by:
+% \begin{equation*}
+% h(x) \coloneq V(f, [a, x]) - f(x)
+% \end{equation*}
+% Prove that $h(x)$ is nondecreasing.
+---
+Definition: 
+For a function $f: [a, b] \xrightarrow{} \mathbb{R}$, the derivative at some point $x \in (a, b)$ is defined as:
+\begin{equation*}
+f'(x) \coloneq \lim_{z \xrightarrow{} x}\frac{f(z) - f(x)}{z-x}
+\end{equation*}
+or alternatively
+\begin{equation*}
+f'(x) \coloneq \lim_{h \xrightarrow{} 0^+}\frac{f(x+h) - f(x)}{h}
+\end{equation*}
+---
+Lemma: 
+If a function $f$ is differentiable on $(a, b)$ then it is continuous on $(a, b)$.
+---
+Theorem: 
+The Mean Value Theorem states that:
+\begin{equation*}
+f: [a, b] \xrightarrow{} \mathbb{R} \land f \ \text{continuous on } [a, b] \land f \ \text{differentiable on } (a, b) \implies \exists z \in (a, b): f'(z) = \frac{f(b) - f(a)}{b-a}
+\end{equation*}
+---
+Definition: 
+A local max is a point $x \in (a, b)$ such that:
+\begin{equation*}
+\exists \delta_0 > 0, \forall z \in B(x, \delta_0): f(z) \leqslant f(x)
+\end{equation*}
+A local min is a point $x \in (a, b)$ such that:
+\begin{equation*}
+\exists \delta_0 > 0, \forall z \in B(x, \delta_0): f(z) \geqslant f(x)
+\end{equation*}
+---
+Theorem: 
+Rolle's Theorem: Let $f$ be continuous on $[a, b]$ and differentiable on $(a, b)$ and $f(a) = f(b)$, then $\exists z \in (a, b): f'(z) = 0$.
+---
+Lemma: 
+L'Hopital's Rule helps evaluate derivatives and says if $f, g: [a, b] \xrightarrow{} \mathbb{R}$ is continuous on $[a, b]$ and differentiable on $(a, b)\setminus \{x\}$, then:
+\begin{equation*}
+\lim_{z \xrightarrow{} x}\frac{f(z)}{g(z)} = \lim_{z \xrightarrow{} x}\frac{f'(z)}{g'(z)}
+\end{equation*}
+Notice how, because we are taking limits of derivatives once again, we do not care about the value of the derivatives at the point $x$ itself. 
+---
+Lemma: 
+Given a function $f: \mathbb{R} \xrightarrow{} \mathbb{R}$ and $a \in \text{int}(\text{Dom}(f))$, prove:
+\begin{equation*}
+f'(a) \ \text{exists} \iff \exists b \in \mathbb{R}: \lim_{\delta \xrightarrow{} 0^+}\frac{1}{\delta}\sup_{x \in (a-\delta, a+\delta)}|f(x) - f(a) - b(x-a)| = 0
+\end{equation*}
+Also prove that $b$ satisfying the condition on the right is necessarily unique.
+---
+Theorem: 
+Given a function $f: [a, b] \xrightarrow{} \mathbb{R}$ that is $n+1$-times differentiable within $(a, b)$:
+\begin{equation*}
+\forall x_0 \in (a, b), \exists z \in (a, b): f(x) - \sum_{i=0}^{n}\frac{f^{(i)}(x_0)}{i!}(x-x_0)^i = \frac{f^{(n+1)}(z)}{(n+1)!}(x-x_0)^{n+1}
+\end{equation*}
+---
+Theorem: 
+Let $I \subseteq \mathbb{R}$ be an open interval, $n \in \mathbb{N}\setminus \{0\}$ and, given $a \in I$, assume that $f: I \xrightarrow{} \mathbb{R}$ (with $\text{Dom}(f) = I$) is $(n-1)$-times differentiable on $I$ and $n$-times differentiable at $a$. Prove that
+\begin{equation*}
+\lim_{x \xrightarrow{} a}\frac{f(x) - P_n(x)}{(x-a)^n} = 0
+\end{equation*} 
+---
+Lemma: 
+
+---
+Lemma: 
+A multivariate function $f$ is totally differentiable (in other words its Jacobian $Df$ exists) if and only if its partial derivatives exist AND are continuous (existence is not sufficient).
+---
+Theorem: 
+The Inverse Function theorem states that if $f$ is a continously differentiable multivariate function at a point $x \in \text{Dom}(f)$, then there exists some local ball $B(x, \delta)$ such that $f$ is injective on $f(B(x, \delta))$ and its local inverse is continuously differentiable.
+---
+Theorem: 
+The Implicit Function Theorem says that a continuously differentiable function with an invertible $y$-minor, for example, $F(x, y)$. For some:
+\begin{equation*}
+  (x_0, y_0) \in \text{int}(\text{Dom}(f)): F(x_0, y_0) = 0 \implies \exists \delta > 0, \forall x \in B(x_0, \delta): y \coloneq y(x) \land y(x_0) = y_0
+\end{equation*}
+---
+Definition: 
+A function $f$ is Riemann integrable on an interval $[a, b]$ if:
+\begin{equation*}
+\forall \epsilon > 0, \exists \delta > 0, \forall \Pi: ||\Pi|| < \delta \implies \left|R(f, \Pi) - \int_{a}^{b}f(x)dx\right| < \epsilon
+\end{equation*}
+where $R(f, \Pi)$ is the Riemann sum over the partition $\Pi$, defined as:
+\begin{equation*}
+R(f, \Pi) \coloneq \sum_{i=1}^{n}f(t_i^*)(t_i - t_{i-1})
+\end{equation*}
+---
+Definition: 
+The upper Darboux sum is:
+\begin{equation*}
+U(f, \Pi) \coloneq \sum_{i=1}^{n}\sup_{z \in [t_{i-1}, t_i]}f(z)(t_i - t_{i-1})
+\end{equation*}
+and the lower Darboux sum is:
+\begin{equation*}
+L(f, \Pi) \coloneq \sum_{i=1}^{n}\inf_{z \in [t_{i-1}, t_i]}f(z) (t_i - t_{i-1})
+\end{equation*}
+---
+Lemma: 
+A function $f$ is Darboux integrable on $[a, b]$ if:
+\begin{equation*}
+\forall \epsilon > 0, \exists \Pi_{[a, b]}: \sum_{i=1}^{n}\text{osc}(f, [t_{i-1}, t_i])(t_i - t_{i-1}) < \epsilon
+\end{equation*}
+---
+Lemma: 
+Monotone functions are always Riemann integrable.
+---
+Definition: 
+A subset of a topological space $A \subseteq X$ is dense in $X$ if (we propose two equivalent conditions):
+\begin{enumerate}
+  \item $\forall x \in X, \forall U_x \in \uptau_X: U \cap A \neq \varnothing$
+  \item $\bar{A} = X$
+\end{enumerate}
+
+---
+Definition: 
+Consider $A \subseteq Y \subseteq X$, then $A$ is dense in $Y$ if $Y \subseteq \bar{A}$.
+---
+Definition: 
+The subspace topology is an induced topology on a subset $Y \subseteq X$, where:
+\begin{equation*}
+  \uptau_Y \coloneq \{O \cap Y : O \in \uptau_X\}
+\end{equation*}
+---
+Lemma: 
+The closure of $A$ with respect to $Y$, which we will denote as $\overline{A}^Y$ is the same as $\bar{A} \cap Y$.
+---
+Lemma: 
+For $A$ dense in a subset $Y$, another equivalent form of the statement is $\bar{A}^Y = Y$.
+---
+Definition: 
+$A$ is \textbf{somewhere dense} if there exists some open $Y \subseteq X$ such that $\overline{A \cap Y} = \bar{Y}$
+---
+Definition: 
+A subset $A$ is nowhere dense if and only if it is NOT somewhere dense.
+---
+Corollary: 
+If $A$ is somewhere dense for some open $Y \subseteq X$, then $\overline{A \cap Y} = \bar{A} \cap \bar{Y}$
+---
+Lemma: 
+The Cantor Set is nowhere dense.
+---
+Lemma: 
+The Cantor Set is perfect, which means it is closed and has no isolated points.
+---
+Lemma: 
+The function $1_C$ is bounded and Riemann integrable on $[0, 1]$ and $\int_{0}^{1}1_C dx = 0$.
+---
+Definition: 
+The outer measure of a set $A$ is via covering sequences of intervals $\{I_n\}_{n \in \mathbb{N}}$:
+\begin{equation*}
+  |A| \coloneq \inf\left\{\sum_{n \in \mathbb{N}}l(I_n) : A \subseteq \bigcup_{n \in \mathbb{N}} I_n\right\}
+\end{equation*}
+---
+Lemma: 
+The measure of a finite set of points is $0$.
+---
+Lemma: 
+The measure of a countable set of points is 0.
+---
+Lemma: 
+If $A \subseteq B$, then the measure of $A$ is less than or equal to the measure of $B$.
+---
+Lemma: 
+The measure of an open interval $(a, b)$ is equal to the measure of the closed interval $[a, b]$.
+---
+Lemma: 
+Outer measure is subadditive so that:
+\begin{equation*}
+  \forall n \in \mathbb{N}: \left|\bigcup_{n \in \mathbb{N}}A_n\right| \leqslant \sum_{n \in \mathbb{N}}|A_n|
+\end{equation*}
+---
+Lemma: 
+For a sequence of disjoint open intervals $I_n$, we have that:
+\begin{equation*}
+  \left|\bigcup_{n \in \mathbb{N}}I_n\right| = \sum_{n \in \mathbb{N}}|I_n|
+\end{equation*}
+---
+Definition: 
+Given a function $f: [a, b] \xrightarrow{} \mathbb{R}$, we define the antiderivative $F: [a, b] \xrightarrow{} \mathbb{R}$ as a function that is continuous on $[a, b]$ and differentiable on $(a, b)$, such that:
+\begin{equation*}
+  \forall x \in (a, b): F'(x) = f(x)
+\end{equation*}
+---
+Lemma: 
+If $f$ is Riemann Integrable on $[a, b]$, then $F(x) \coloneq \int_{a}^{x} f(t) dt$ and $F(a) \coloneq 0$ is lipschitz continuous on $(a, b)$ and left/right continuous at $a, b$ respectively.
+---
+Theorem: 
+FTC1: If $f$ is continuous on $[a, b]$, then $\forall x \in (a, b): F'(x) = f(x)$.
+---
+Theorem: 
+FTC2: Given an antiderivative $F: [a, b] \xrightarrow{} \mathbb{R}$ of the function $f$ with $F'$ being Riemann Integrable, then:
+\begin{equation*}
+  \int_{a}^{b} F'(x)dx = F(b) - F(a)
+\end{equation*}
+---
+Corollary: 
+U-Substitution: Given some continuous function $f$ on $[c, d]$ and a continuous function $\phi: [a, b] \xrightarrow{} (c, d)$ which is continuous on $[a, b]$ and differentiable on $(a, b)$:
+\begin{equation*}
+  \int_{\phi(b)}^{\phi(a)} f(t) dt = \int_{a}^{b}f(\phi(x)) \cdot \phi'(x) dx
+\end{equation*}
+---
+Lemma: 
+The integral inequality states for all Riemann integrable functions $f$ on the interval $[a, b]$:
+\begin{equation*}
+  \left|\int_{a}^{b} f(x)dx \right| \leqslant \int_{a}^{b} |f(x)| dx
+\end{equation*}
+---
+Definition: 
+A function $f: [a, b] \xrightarrow{} \mathbb{R}$ is Stieltjes integrable with respect to $g: [a, b] \xrightarrow{} \mathbb{R}$ if:
+\begin{equation*}
+  \int_{a}^{b}f dg \coloneq \lim_{||\Pi|| \xrightarrow{} 0}\sum_{i=1}^{n}f(t_i^*)(g(t_i) - g(t_{i-1})) \ \text{exists}
+\end{equation*}
+---
+Lemma: 
+Consider $f_1, f_2 \in RS(g, [a, b])$ and $\alpha, \beta \in \mathbb{R}$, then:
+\begin{equation*}
+  \int_{a}^{b}(\alpha f_1 + \beta f_2) dg = \alpha \int_{a}^{b}f_1 dg + \beta \int_{a}^{b}f_2 dg
+\end{equation*}
+---
+Lemma: 
+Consider $f \in RS(g, [a, b]) \cap RS(h, [a, b])$, then:
+\begin{equation*}
+\int_{a}^{b}f d(\alpha g + \beta h) = \alpha \int_{a}^{b}f dg + \beta \int_{a}^{b}f dh
+\end{equation*}
+---
+Lemma: 
+If $f \in RS(g, [a, b])$, then:
+\begin{equation*}
+  \forall \epsilon > 0, \exists \delta > 0, \forall \Pi: ||\Pi|| < \delta \implies \sum_{i=1}^{n}\text{osc}(f, [t_{i-1}, t_i])|g(t_i) - g(t_{i-1})| < \epsilon
+\end{equation*}
+---
+Lemma: 
+If $f \in RS(g, [a, b])$, then $f$ and $g$ CANNOT share points of discontinuity.
+---
+Lemma: 
+$f \in RS(g, [a, b])$ if and only if:
+\begin{equation}
+\forall \epsilon > 0, \exists \delta > 0, \forall \Pi: \max\{||\Pi||, ||\Pi'||\} < \delta \implies |S(f, g, \Pi) - S(f, g, \Pi')| < \epsilon
+\end{equation}
+---
+Definition: 
+Given two metric spaces $(X, \varrho)$ and $(Y, \varrho)$, a sequence of functions $\{f_n\}_{n \in \mathbb{N}}$ that map from $X$ to $Y$ is pointwise convergent if:
+\begin{equation*}
+\forall \epsilon > 0, \forall x \in X, \exists n_0 \geqslant 0, \forall n \geqslant n_0: \varrho(f_n(x), f(x)) < \epsilon
+\end{equation*}
+---
+Definition: 
+A sequence $\{f_n\}_{n \in \mathbb{N}}$ is called uniformly convergent if:
+\begin{equation*}
+\forall \epsilon > 0, \exists n_0 \geqslant 0, \forall x \in X, \forall n \geqslant n_0: \varrho(f_n(x), f(x)) < \epsilon
+\end{equation*}
+---
+Lemma: 
+A uniformly convergent sequence $\{f_n\}_{n \in \mathbb{N}}$ is also pointwise convergent.
+---
+Lemma: 
+If $\forall n \in \mathbb{N}, \exists M_n, \forall x \in X: |f_n(x)| \leqslant M_n$ and $f_n \xrightarrow{} f$ uniformly, then $f(x)$ is bounded.
+---
+Theorem: 
+If $f_n \xrightarrow{} f$ uniformly, then if all $f_n$ are continuous at $x_0$, $f$ is continuous at $x_0$.
+---
+Definition: 
+A sequence of functions is called pointwise Cauchy if:
+\begin{equation*}
+\forall x \in X, \forall \epsilon > 0, \exists n_0 \geqslant 0, \forall m, n \geqslant n_0: \varrho(f_n(x), f_m(x)) < \epsilon
+\end{equation*}
+Similarly such a sequence is called uniformly Cauchy if:
+\begin{equation*}
+\forall \epsilon > 0, \exists n_0 \geqslant 0, \forall m, n \geqslant n_0, \forall x \in X: \varrho(f_n(x), f_m(x)) < \epsilon
+\end{equation*}
+---
+Lemma: 
+If $f_n \xrightarrow{} f$ converges uniformly, then $f_n$ is uniformly Cauchy. For the converse, if $f_n$ is uniformly Cauchy, then if $Y$ is complete, $f_n$ converges uniformly. 
+---
+Lemma: 
+$f_n \xrightarrow{} f$ uniformly and each $f_n$ is continuous, then $f_n$ is equicontinuous. 
+---
+Corollary: 
+$f_n \xrightarrow{} f$ uniformly and each $f_n$ uniformly continuous, then $f_n$ is uniformly equicontinuous.
+---
+Theorem: 
+Given $f_n: X \xrightarrow{} Y$, we have that:
+\begin{equation*}
+  \{f_n\}_{n \in \mathbb{N}} \ \text{equicontinuous} \land f_n \xrightarrow{} f \ \text{pointwise} \land X \ \text{compact}
+\end{equation*}
+\begin{equation*}
+  \implies f_n \xrightarrow{} f \ \text{uniformly}
+\end{equation*}
+---
+Corollary: 
+Given $f_n: X \xrightarrow{} Y$, we have that:
+\begin{equation*}
+  \{f_n\}_{n \in \mathbb{N}} \ \text{ uniformly equicontinuous} \land f_n \xrightarrow{} f \ \text{pointwise} \land X \ \text{totally bounded}
+\end{equation*}
+\begin{equation*}
+  \implies f_n \xrightarrow{} f \ \text{uniformly}
+\end{equation*}
+---
+Definition: 
     A proposition is a statement that takes a TRUE or FALSE value
 ---
 Definition: 

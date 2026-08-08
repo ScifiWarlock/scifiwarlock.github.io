@@ -10,6 +10,8 @@ body {
 
 /* Top navigation */
 .topnav {
+  top: 0;
+  left: 0; /* Ensures it grounds to the top-left edge */
   position: fixed;
   top: 0;
   width: 100%;
@@ -142,4 +144,7 @@ mjx-container {
 
 .post.active {
     display: block;
+}
+html {
+    scrollbar-gutter: stable;
 }
